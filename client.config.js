@@ -9,7 +9,7 @@ export const clientConfig = {
   colors: {
     primary: "#ba2f5d",      // clr-primary-a0
     secondary: "#184e77",    // Secondary brand color
-    background: "#f5f5dc",   // Page background (light mode)
+    background: "#f6f2ea",   // Page background (light mode)
     accent1: "#f59e0b",      // First accent color
     accent2: "#10b981",      // Second accent color
     accent3: "#8b5cf6",      // Third accent color
@@ -19,7 +19,7 @@ export const clientConfig = {
   },
 
   typography: {
-    bodyFont: "'Inter', system-ui, sans-serif",
+    bodyFont: "'Poppins', 'Inter', sans-serif",
     headerFont: "'Poppins', 'Inter', sans-serif",
     monoFont: "'JetBrains Mono', 'Fira Code', monospace"
   },

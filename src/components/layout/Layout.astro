@@ -1,0 +1,130 @@
+---
+import { clientConfig } from '../../../client.config.js';
+import '../../styles/base.css';
+import '../../styles/DarkTheme/dark-theme-generator-colors.css';
+import '../../styles/DarkTheme/dark-mode-mapping.css';
+import { SkipLink, DarkMode } from 'accessible-astro-components';
+
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = clientConfig.seo.title, description = clientConfig.seo.description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={clientConfig.seo.keywords} />
+    <meta name="author" content={clientConfig.seo.author} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={clientConfig.brand.favicon} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={clientConfig.seo.ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={clientConfig.seo.ogImage} />
+
+    <title>{title}</title>
+
+    <!-- CSS Variables from client config -->
+    <style define:vars={{
+      // Colors from client config
+      'color-primary': clientConfig.colors.primary,
+      'color-secondary': clientConfig.colors.secondary,
+      'color-background': clientConfig.colors.background,
+      'color-accent1': clientConfig.colors.accent1,
+      'color-accent2': clientConfig.colors.accent2,
+      'color-accent3': clientConfig.colors.accent3,
+      'color-text': clientConfig.colors.text,
+      'color-text-light': clientConfig.colors.textLight,
+      'color-text-muted': clientConfig.colors.textMuted,
+      // Typography
+      'font-body': clientConfig.typography.bodyFont,
+      'font-header': clientConfig.typography.headerFont,
+      'font-mono': clientConfig.typography.monoFont,
+    }}>
+      :root {
+        /* Typography */
+        --font-body: var(--font-body);
+        --font-header: var(--font-header);
+        --font-mono: var(--font-mono);
+
+        /* System colors */
+        --color-white: #ffffff;
+        --color-black: #000000;
+      }
+
+      /* Light mode only - these get overridden in dark mode */
+      :root:not(.darkmode) {
+        --color-background: var(--color-background);
+        --color-text: var(--color-text);
+        --color-text-light: var(--color-text-light);
+        --color-text-muted: var(--color-text-muted);
+        --color-primary: var(--color-primary);
+        --color-primary-hover: var(--color-primary);
+        --color-secondary: var(--color-secondary);
+        --color-accent1: var(--color-accent1);
+        --color-accent2: var(--color-accent2);
+        --color-accent3: var(--color-accent3);
+
+        /* Theme variables for components */
+        --theme-surface: var(--color-background);
+        --theme-surface-elevated: color-mix(in srgb, var(--color-background) 90%, var(--color-text) 10%);
+        --theme-border: color-mix(in srgb, var(--color-background) 80%, var(--color-text) 20%);
+        --theme-primary: var(--color-primary);
+        --theme-text: var(--color-text);
+        --theme-text-light: var(--color-text-light);
+        --theme-text-muted: var(--color-text-muted);
+      }
+    </style>
+  </head>
+  <body>
+    <style>
+      /* Accessibility controls styling */
+      .accessibility-controls {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: var(--z-fixed);
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      /* Ensure main content has proper skip link target */
+      #main-content:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+    </style>
+    <!-- Skip Link for accessibility -->
+    <SkipLink />
+
+    <!-- Accessibility controls -->
+    <div class="accessibility-controls">
+      <DarkMode />
+    </div>
+
+    <!-- Main content -->
+    <main id="main-content">
+      <slot />
+    </main>
+
+  </body>
+</html>

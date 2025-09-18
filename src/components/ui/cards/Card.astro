@@ -54,41 +54,58 @@ const classes = [
 <style>
   /* Base card styles */
   .card {
-    background: var(--color-white);
-    border-radius: var(--radius-lg);
-    transition: var(--transition-base);
+    background: var(--theme-surface, var(--card-bg, var(--color-surface, var(--color-white))));
+    border: 1px solid var(--theme-border, var(--card-border, rgba(0, 0, 0, 0.08)));
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
     overflow: hidden;
+    position: relative;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   }
 
   /* Card variants */
   .card-default {
-    background: var(--color-white);
-    color: var(--color-text);
+    background: var(--theme-surface, var(--card-bg, var(--color-surface, var(--color-white))));
+    color: var(--theme-text, var(--card-text, var(--color-text)));
   }
 
   .card-primary {
-    background: var(--color-primary);
-    color: var(--color-white);
+    background: var(--theme-primary, var(--color-primary));
+    color: var(--theme-text, var(--color-white));
+    border-color: var(--theme-primary, var(--color-primary));
   }
 
   .card-secondary {
     background: var(--color-secondary);
-    color: var(--color-white);
+    color: var(--theme-text, var(--color-white));
+    border-color: var(--color-secondary);
   }
 
   .card-accent1 {
     background: var(--color-accent1);
-    color: var(--color-white);
+    color: var(--theme-text, var(--color-white));
+    border-color: var(--color-accent1);
   }
 
   .card-accent2 {
     background: var(--color-accent2);
-    color: var(--color-white);
+    color: var(--theme-text, var(--color-white));
+    border-color: var(--color-accent2);
   }
 
   .card-accent3 {
     background: var(--color-accent3);
-    color: var(--color-white);
+    color: var(--theme-text, var(--color-white));
+    border-color: var(--color-accent3);
   }
 
   /* Card sizes */
@@ -110,21 +127,33 @@ const classes = [
   }
 
   .shadow-sm {
-    box-shadow: var(--shadow-sm);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      0 1px 2px rgba(0, 0, 0, 0.04);
   }
 
   .shadow-md {
-    box-shadow: var(--shadow-md);
+    box-shadow:
+      0 4px 6px rgba(0, 0, 0, 0.05),
+      0 2px 4px rgba(0, 0, 0, 0.03),
+      0 1px 2px rgba(0, 0, 0, 0.02);
   }
 
   .shadow-lg {
-    box-shadow: var(--shadow-lg);
+    box-shadow:
+      0 10px 25px rgba(0, 0, 0, 0.08),
+      0 6px 12px rgba(0, 0, 0, 0.04),
+      0 3px 6px rgba(0, 0, 0, 0.02);
   }
 
   /* Hover effects */
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    transform: translateY(-6px);
+    box-shadow:
+      0 20px 40px rgba(0, 0, 0, 0.12),
+      0 8px 16px rgba(0, 0, 0, 0.06),
+      0 4px 8px rgba(0, 0, 0, 0.03);
+    border-color: var(--theme-primary, var(--color-primary));
   }
 
   .card-primary.card-hover:hover,
@@ -132,6 +161,58 @@ const classes = [
   .card-accent1.card-hover:hover,
   .card-accent2.card-hover:hover,
   .card-accent3.card-hover:hover {
-    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.15),
+      0 10px 20px rgba(0, 0, 0, 0.08),
+      0 5px 10px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Subtle animation on content */
+  .card-hover {
+    cursor: pointer;
+  }
+
+  .card-hover:hover .card-content {
+    transform: translateY(-2px);
+  }
+
+  /* Focus states for accessibility */
+  .card:focus-visible {
+    outline: 2px solid var(--theme-primary, var(--color-primary));
+    outline-offset: 3px;
+    transform: translateY(-4px);
+    border-color: var(--theme-primary, var(--color-primary));
+  }
+
+  .card:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Accessibility improvements for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    .card::before,
+    .card-content {
+      transition: none;
+    }
+
+    .card-hover:hover,
+    .card:focus-visible,
+    .card-hover:hover .card-content {
+      transform: none;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .card {
+      border: 2px solid var(--theme-border, rgba(0, 0, 0, 0.2));
+    }
+
+    .card-hover:hover {
+      border-color: var(--theme-primary, var(--color-primary));
+      border-width: 3px;
+    }
   }
 </style>

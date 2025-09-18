@@ -1,15 +1,19 @@
-/* Dark Theme Generator || From colorffy.com */ 
+/* Dark Theme Generator || From colorffy.com */
  :root {
+/** Base Colors */
+--clr-dark-a0: #3f3b3b;
+--clr-light-a0: #f1ede3;
+
 /** Primary Colors */
---clr-primary-a0: #eb1e5c;
+--clr-primary-a0: #1e8123;
 --clr-primary-a10: #f1486c;
---clr-primary-a20: #f6657d;
+--clr-primary-a20: #30317e;
 --clr-primary-a30: #fb7e8e;
 --clr-primary-a40: #fe95a0;
 --clr-primary-a50: #ffabb2;
 
 /** Surface Colors */
---clr-surface-a0: #121212;
+--clr-surface-a0: #383737;
 --clr-surface-a10: #282828;
 --clr-surface-a20: #3f3f3f;
 --clr-surface-a30: #575757;
@@ -18,7 +22,7 @@
 
 /** Mixed Colors */
 --clr-surface-tonal-a0: #261819;
---clr-surface-tonal-a10: #3b2d2e;
+--clr-surface-tonal-a10: #524d4e;
 --clr-surface-tonal-a20: #514444;
 --clr-surface-tonal-a30: #675c5c;
 --clr-surface-tonal-a40: #7f7575;

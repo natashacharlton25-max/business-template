@@ -1,0 +1,117 @@
+/* Dark Mode Mapping: references only Colorffy variables */
+
+/* Dark mode CSS variables - applied when darkmode class is on html */
+html.darkmode {
+  --color-background: var(--clr-surface-a0);       /* #383737 - dark gray background */
+  --color-surface: var(--clr-surface-a10);         /* #282828 - cards */
+  --color-surface-muted: var(--clr-surface-a20);   /* #3f3f3f - secondary panels */
+  --color-sidebar: var(--clr-surface-tonal-a0);    /* #261819 - sidebar background */
+  --color-header: var(--clr-surface-a10);          /* #282828 - top nav/header */
+
+  /* === Text === */
+  --color-text: var(--clr-light-a0);               /* #f1ede3 - light text for dark background */
+  --color-text-light: var(--clr-surface-a50);      /* #8b8b8b - light gray text */
+  --color-text-muted: var(--clr-surface-a40);      /* #717171 - muted gray text */
+  --color-text-inverse: var(--clr-dark-a0);        /* #3f3b3b - dark text on light buttons */
+  --color-heading: var(--clr-light-a0);            /* #f1ede3 - headings */
+
+  /* === Brand & Status === */
+  --color-primary: var(--clr-primary-a0);          /* #1e8123 */
+  --color-primary-hover: var(--clr-primary-a20);   /* #30317e */
+  --color-danger: var(--clr-primary-a10);          /* #f1486c */
+  --color-success: #4CAF50;                        /* external status colour */
+  --color-warning: #FFC107;                        /* external status colour */
+
+  /* === Borders & Dividers === */
+  --color-border: var(--clr-surface-a30);          /* #575757 */
+  --color-divider: var(--clr-surface-a20);         /* #3f3f3f */
+
+  /* === Cards === */
+  --card-bg: var(--clr-surface-a10);               /* #282828 */
+  --card-border: var(--clr-surface-a30);           /* #575757 */
+  --card-text: var(--clr-light-a0);                /* #f1ede3 */
+  --card-muted-text: var(--clr-surface-a50);       /* #8b8b8b */
+
+  /* === Sidebar === */
+  --sidebar-bg: var(--clr-surface-tonal-a0);       /* #261819 */
+  --sidebar-text: var(--clr-surface-a50);          /* #8b8b8b */
+  --sidebar-active: var(--clr-primary-a0);         /* #1e8123 */
+
+  /* === Buttons === */
+  --button-bg: var(--clr-primary-a0);              /* #1e8123 */
+  --button-hover: var(--clr-primary-a20);          /* #30317e */
+  --button-text: var(--clr-light-a0);              /* #f1ede3 */
+
+  /* === Icons === */
+  --icon-default: var(--clr-surface-a50);          /* #8b8b8b */
+  --icon-active: var(--clr-primary-a0);            /* #1e8123 */
+  --icon-danger: var(--clr-primary-a10);           /* #f1486c */
+
+  /* === Theme Variables for Components === */
+  --theme-surface: var(--clr-surface-a10);         /* #282828 */
+  --theme-surface-elevated: var(--clr-surface-a20); /* #3f3f3f */
+  --theme-border: var(--clr-surface-a30);          /* #575757 */
+  --theme-primary: var(--clr-primary-a0);          /* #1e8123 */
+  --theme-text: var(--clr-light-a0);               /* #f1ede3 */
+  --theme-text-light: var(--clr-surface-a50);      /* #8b8b8b */
+  --theme-text-muted: var(--clr-surface-a40);      /* #717171 */
+
+  /* === Inputs & Fields === */
+  --input-bg: var(--clr-surface-a20);              /* #3f3f3f */
+  --input-border: var(--clr-surface-a30);          /* #575757 */
+  --input-text: var(--clr-light-a0);               /* #f1ede3 */
+  --input-placeholder: var(--clr-surface-a50);     /* #8b8b8b */
+}
+
+/* Apply backgrounds directly to elements using your dark theme colors */
+html.darkmode {
+  background-color: var(--clr-surface-a0);  /* #383737 - dark gray not black */
+}
+
+html.darkmode body {
+  background-color: var(--clr-surface-a0);  /* #383737 - dark gray not black */
+  color: var(--clr-light-a0);               /* #f1ede3 - light text for dark background */
+}
+
+/* Override accessible-astro-components in dark mode */
+html.darkmode button {
+  background-color: var(--clr-surface-a10);  /* #282828 */
+  color: var(--clr-light-a0);                /* #f1ede3 - light text for dark background */
+  border: 1px solid var(--clr-surface-a30);  /* #575757 */
+}
+
+html.darkmode button:hover {
+  background-color: var(--clr-primary-a0);   /* #eb1e5c */
+  color: var(--clr-light-a0);                /* #f1ede3 */
+  border-color: var(--clr-primary-a0);
+}
+
+html.darkmode .darkmode-toggle {
+  background-color: var(--clr-surface-a10);  /* #282828 */
+  color: var(--clr-light-a0);                /* #f1ede3 - light text for dark background */
+  border: 1px solid var(--clr-surface-a30);  /* #575757 */
+}
+
+html.darkmode .darkmode-toggle:hover {
+  background-color: var(--clr-primary-a0);   /* #eb1e5c */
+  color: var(--clr-light-a0);                /* #f1ede3 */
+}
+
+html.darkmode .notification {
+  background-color: var(--clr-surface-a10);  /* #282828 */
+  color: var(--clr-light-a0);                /* #f1ede3 - light text for dark background */
+  border: 1px solid var(--clr-surface-a30);  /* #575757 */
+}
+
+html.darkmode .notification--info {
+  background-color: var(--clr-primary-a0);   /* #eb1e5c */
+  color: var(--clr-light-a0);                /* #f1ede3 */
+  border: 1px solid var(--clr-primary-a0);
+}
+
+html.darkmode .card {
+  background-color: var(--clr-surface-a10);  /* #282828 */
+  color: var(--clr-light-a0);                /* #f1ede3 - light text for dark background */
+  border: 1px solid var(--clr-surface-a30);  /* #575757 */
+}
+

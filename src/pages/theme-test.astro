@@ -1,0 +1,294 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import LinkButton from '../components/ui/buttons/LinkButton.astro';
+import { Button, Card, Notification } from 'accessible-astro-components';
+---
+
+<Layout title="Theme Test - Light & Dark Mode">
+  <div class="container section">
+    <div class="theme-test-page">
+
+      <!-- Header Section -->
+      <section class="test-section">
+        <h1>Theme Test Page</h1>
+        <p>This page demonstrates the light and dark theme system using colors from client.config.js and the dark theme CSS file.</p>
+        <p class="instructions">
+          <strong>Toggle dark mode:</strong> Use the dark mode button in the top-right corner to test both themes.
+        </p>
+      </section>
+
+      <!-- Color Palette Display -->
+      <section class="test-section">
+        <h2>Color System</h2>
+        <div class="color-grid">
+          <div class="color-item">
+            <div class="color-swatch bg-primary"></div>
+            <p>Primary</p>
+          </div>
+          <div class="color-item">
+            <div class="color-swatch bg-secondary"></div>
+            <p>Secondary</p>
+          </div>
+          <div class="color-item">
+            <div class="color-swatch bg-accent1"></div>
+            <p>Accent 1</p>
+          </div>
+          <div class="color-item">
+            <div class="color-swatch bg-accent2"></div>
+            <p>Accent 2</p>
+          </div>
+          <div class="color-item">
+            <div class="color-swatch bg-accent3"></div>
+            <p>Accent 3</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography Test -->
+      <section class="test-section">
+        <h2>Typography</h2>
+        <h1>Heading 1 - Header Font</h1>
+        <h2>Heading 2 - Header Font</h2>
+        <h3>Heading 3 - Header Font</h3>
+        <p>Regular paragraph text using the body font. This text should adapt to light and dark themes.</p>
+        <p class="text-light">Secondary text with lighter color for less important information.</p>
+        <p class="text-muted">Muted text for subtle information and captions.</p>
+      </section>
+
+      <!-- Button Tests -->
+      <section class="test-section">
+        <h2>Buttons</h2>
+
+        <h3>LinkButton Components</h3>
+        <div class="button-group">
+          <LinkButton text="Primary Button" variant="primary" size="medium" />
+          <LinkButton text="Secondary Button" variant="secondary" size="medium" />
+          <LinkButton text="Small Primary" variant="primary" size="small" />
+          <LinkButton text="Large Secondary" variant="secondary" size="large" />
+        </div>
+
+        <h3>Accessible Astro Buttons</h3>
+        <div class="button-group">
+          <Button>Default Button</Button>
+          <Button variant="secondary">Secondary Button</Button>
+          <Button variant="outline">Outline Button</Button>
+        </div>
+      </section>
+
+      <!-- Card Tests -->
+      <section class="test-section">
+        <h2>Cards & Surfaces</h2>
+        <div class="card-grid">
+          <Card>
+            <h3>Card Title</h3>
+            <p>This card should adapt to both light and dark themes with proper surface colors and text contrast.</p>
+            <Button>Card Action</Button>
+          </Card>
+
+          <Card>
+            <h3>Another Card</h3>
+            <p>Cards use theme surface colors that change between light and dark mode.</p>
+            <Button variant="secondary">Secondary Action</Button>
+          </Card>
+
+          <Card>
+            <h3>Third Card</h3>
+            <p>Hover over cards to see the elevated surface effect.</p>
+            <Button variant="outline">Outline Action</Button>
+          </Card>
+        </div>
+      </section>
+
+      <!-- Notifications Test -->
+      <section class="test-section">
+        <h2>Notifications</h2>
+        <Notification type="info">
+          <p><strong>Info:</strong> This is an info notification that adapts to the current theme.</p>
+        </Notification>
+      </section>
+
+      <!-- Theme Information -->
+      <section class="test-section">
+        <h2>Theme System Info</h2>
+        <div class="theme-info">
+          <h3>Light Mode (Default)</h3>
+          <ul>
+            <li>Colors defined in client.config.js</li>
+            <li>Light background with dark text</li>
+            <li>Primary color: #ba2f5d</li>
+            <li>Uses standard light theme surfaces</li>
+          </ul>
+
+          <h3>Dark Mode</h3>
+          <ul>
+            <li>Colors from dark-theme-generator-colors.css</li>
+            <li>Dark surface backgrounds</li>
+            <li>Light text for proper contrast</li>
+            <li>Same primary colors with dark theme mapping</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .theme-test-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .theme-test-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .test-section {
+    margin-bottom: var(--space-4xl);
+    padding: var(--space-2xl);
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .test-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--theme-primary), var(--color-accent1, var(--theme-primary)), var(--theme-primary));
+    opacity: 0;
+    transition: opacity var(--transition-base);
+  }
+
+  .test-section:hover {
+    background: var(--theme-surface-elevated);
+    border-color: var(--theme-primary);
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  .test-section:hover::before {
+    opacity: 1;
+  }
+
+  .instructions {
+    padding: var(--space-lg);
+    background: var(--theme-surface-elevated);
+    border-left: 4px solid var(--theme-primary);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-lg);
+  }
+
+  .color-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  .color-item {
+    text-align: center;
+  }
+
+  .color-swatch {
+    width: 80px;
+    height: 80px;
+    border-radius: var(--radius-lg);
+    margin: 0 auto var(--space-sm);
+    border: 2px solid var(--theme-border);
+    transition: transform 0.2s ease;
+  }
+
+  .color-swatch:hover {
+    transform: scale(1.05);
+  }
+
+  .bg-primary { background: var(--color-primary); }
+  .bg-secondary { background: var(--color-secondary); }
+  .bg-accent1 { background: var(--color-accent1); }
+  .bg-accent2 { background: var(--color-accent2); }
+  .bg-accent3 { background: var(--color-accent3); }
+
+  .button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+    margin: var(--space-lg) 0;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+  }
+
+  .theme-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-xl);
+    margin-top: var(--space-lg);
+  }
+
+  .theme-info h3 {
+    color: var(--theme-primary);
+    margin-bottom: var(--space-md);
+  }
+
+  .theme-info ul {
+    list-style-position: inside;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .theme-info li {
+    margin-bottom: var(--space-sm);
+    color: var(--theme-text-light);
+  }
+
+  .text-light {
+    color: var(--theme-text-light);
+  }
+
+  .text-muted {
+    color: var(--theme-text-light);
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .test-section {
+      padding: var(--space-lg);
+    }
+
+    .button-group {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .color-grid {
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .theme-info {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
