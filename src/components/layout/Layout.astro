@@ -1,10 +1,9 @@
 ---
-// Adjust the import path if necessary to match the actual location of client.config.js
-// Adjust the import path below if your client.config.js is in a different location
 import { clientConfig } from '../../../client.config.js';
-// If the file is not in ../../../client.config.js, update the path accordingly, for example:
-// import { clientConfig } from '../../client.config.js';
-// import { clientConfig } from '../../../config/client.config.js';
+import '../../styles/base.css';
+import '../../styles/brand.css';
+import '../../styles/accessibility/theme-colors.css';
+import { SkipLink, DarkMode } from 'accessible-astro-components';
 
 export interface Props {
   title?: string;
@@ -19,257 +18,114 @@ const { title = clientConfig.seo.title, description = clientConfig.seo.descripti
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
+    <meta name="keywords" content={clientConfig.seo.keywords} />
+    <meta name="author" content={clientConfig.seo.author} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={clientConfig.brand.favicon} />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={clientConfig.seo.ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={clientConfig.seo.ogImage} />
+
     <title>{title}</title>
     
     <!-- CSS Variables from client config -->
     <style define:vars={{
+      // Color tokens
+      ...clientConfig.colorTokens,
+      // Legacy colors
       'client-primary': clientConfig.colors.primary,
       'client-secondary': clientConfig.colors.secondary,
       'client-background': clientConfig.colors.background,
-      'client-accent': clientConfig.colors.accent,
+      'client-accent1': clientConfig.colors.accent1,
+      'client-accent2': clientConfig.colors.accent2,
+      'client-accent3': clientConfig.colors.accent3,
+      // Typography
+      'client-font-body': clientConfig.typography.bodyFont,
+      'client-font-header': clientConfig.typography.headerFont,
+      'client-font-mono': clientConfig.typography.monoFont,
     }}>
       :root {
+        /* Color Token System - Direct mapping */
+        --clr-dark-a0: var(--clr-dark-a0);
+        --clr-light-a0: var(--clr-light-a0);
+
+        --clr-primary-a0: var(--clr-primary-a0);
+        --clr-primary-a10: var(--clr-primary-a10);
+        --clr-primary-a20: var(--clr-primary-a20);
+        --clr-primary-a30: var(--clr-primary-a30);
+        --clr-primary-a40: var(--clr-primary-a40);
+        --clr-primary-a50: var(--clr-primary-a50);
+
+        --clr-surface-a0: var(--clr-surface-a0);
+        --clr-surface-a10: var(--clr-surface-a10);
+        --clr-surface-a20: var(--clr-surface-a20);
+        --clr-surface-a30: var(--clr-surface-a30);
+        --clr-surface-a40: var(--clr-surface-a40);
+        --clr-surface-a50: var(--clr-surface-a50);
+
+        --clr-surface-tonal-a0: var(--clr-surface-tonal-a0);
+        --clr-surface-tonal-a10: var(--clr-surface-tonal-a10);
+        --clr-surface-tonal-a20: var(--clr-surface-tonal-a20);
+        --clr-surface-tonal-a30: var(--clr-surface-tonal-a30);
+        --clr-surface-tonal-a40: var(--clr-surface-tonal-a40);
+        --clr-surface-tonal-a50: var(--clr-surface-tonal-a50);
+
+        /* Legacy color variables for compatibility */
         --color-primary: var(--client-primary);
         --color-secondary: var(--client-secondary);
         --color-background: var(--client-background);
-        --color-accent: var(--client-accent);
+        --color-accent1: var(--client-accent1);
+        --color-accent2: var(--client-accent2);
+        --color-accent3: var(--client-accent3);
+
+        /* Typography */
+        --font-body: var(--client-font-body);
+        --font-header: var(--client-font-header);
+        --font-mono: var(--client-font-mono);
       }
     </style>
   </head>
   <body>
-    <!-- Header/Navigation will go here -->
-    <header id="header">
-      <nav class="container">
-        <div class="nav-wrapper">
-          <div class="nav-brand">
-            <a href="/">
-              <img src={clientConfig.brand.logo} alt={clientConfig.brand.name} class="logo" />
-              <span class="brand-name">{clientConfig.brand.name}</span>
-            </a>
-          </div>
-          <div class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/services">Services</a>
-  <a href="/projects">Projects</a>
-  <a href="/insights">Insights</a>
-  <a href="/assets">Assets</a>
-  <a href="/search">Search</a>
-  <a href="/contact">Contact</a>
-</div>
-        </div>
-      </nav>
-    </header>
+    <style>
+      /* Accessibility controls styling */
+      .accessibility-controls {
+        position: fixed;
+        top: 1rem;
+        right: 1rem;
+        z-index: var(--z-fixed);
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      /* Ensure main content has proper skip link target */
+      #main-content:focus {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
+      }
+    </style>
+    <!-- Skip Link for accessibility -->
+    <SkipLink />
+
+    <!-- Accessibility controls -->
+    <div class="accessibility-controls">
+      <DarkMode />
+    </div>
 
     <!-- Main content -->
-    <main>
+    <main id="main-content">
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer id="footer" class="section">
-      <div class="container">
-        <div class="footer-content grid grid-3">
-          <div class="footer-brand">
-            <h4>{clientConfig.brand.name}</h4>
-            <p>{clientConfig.brand.tagline}</p>
-            <div class="footer-contact">
-              <p>{clientConfig.contact.email}</p>
-              <p>{clientConfig.contact.phone}</p>
-            </div>
-          </div>
-          
-          <div class="footer-links">
-            <h5>Quick Links</h5>
-            <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/services">Services</a></li>
-              <li><a href="/projects">Projects</a></li>
-            </ul>
-          </div>
-          
-          <div class="footer-contact">
-            <h5>Get In Touch</h5>
-            <p>{clientConfig.contact.address}</p>
-            <div class="social-links">
-              {clientConfig.contact.social.linkedin && (
-                <a href={clientConfig.contact.social.linkedin}>LinkedIn</a>
-              )}
-              {clientConfig.contact.social.twitter && (
-                <a href={clientConfig.contact.social.twitter}>Twitter</a>
-              )}
-            </div>
-          </div>
-        </div>
-        
-        <div class="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} {clientConfig.brand.name}. All rights reserved.</p>
-        </div>
-      </div>
-    </footer>
   </body>
 </html>
 
-<style>
-  /* Header styles */
-  header {
-    position: sticky;
-    top: 0;
-    background: var(--color-white);
-    box-shadow: var(--shadow-sm);
-    z-index: 100;
-  }
-  
-  .nav-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 0;
-  }
-  
-  .nav-brand {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .nav-brand a {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    color: var(--color-secondary);
-  }
-  
-  .logo {
-    height: 40px;
-    width: auto;
-  }
-  
-  .brand-name {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: var(--color-secondary);
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-  }
-  
-  .nav-links a {
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    position: relative;
-  }
-  
-  .nav-links a:hover {
-    color: var(--color-primary);
-  }
-  
-  .nav-links a::after {
-    content: '';
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--color-primary);
-    transition: width var(--transition-fast);
-  }
-  
-  .nav-links a:hover::after {
-    width: 100%;
-  }
-  
-  /* Footer styles */
-  footer {
-    background: var(--color-secondary);
-    color: var(--color-white);
-    margin-top: auto;
-  }
-  
-  .footer-content {
-    margin-bottom: 2rem;
-  }
-  
-  .footer-brand h4 {
-    color: var(--color-white);
-    margin-bottom: 1rem;
-  }
-  
-  .footer-brand p {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 1rem;
-  }
-  
-  .footer-links h5,
-  .footer-contact h5 {
-    color: var(--color-white);
-    margin-bottom: 1rem;
-    font-size: var(--font-size-lg);
-  }
-  
-  .footer-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .footer-links li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .footer-links a,
-  .footer-contact a {
-    color: rgba(255, 255, 255, 0.8);
-    transition: color var(--transition-fast);
-  }
-  
-  .footer-links a:hover,
-  .footer-contact a:hover {
-    color: var(--color-primary);
-  }
-  
-  .footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-    color: rgba(255, 255, 255, 0.6);
-  }
-  
-  .social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-  
-  /* Mobile responsiveness */
-  @media (max-width: 768px) {
-    .nav-wrapper {
-      flex-direction: column;
-      gap: 1rem;
-    }
-    
-    .nav-links {
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    
-    .footer-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      text-align: center;
-    }
-    
-    .social-links {
-      justify-content: center;
-    }
-  }
-</style>

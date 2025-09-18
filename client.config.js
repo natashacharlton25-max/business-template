@@ -6,42 +6,57 @@ export const clientConfig = {
     favicon: "/favicon.svg"
   },
 
+  // Color Token System
+colorTokens: {
+  "--clr-dark-a0": "#000000",
+  "--clr-light-a0": "#ffffff",
+
+  /** Theme primary colors */
+  "--clr-primary-a0": "#ba2f5d",
+  "--clr-primary-a10": "#c44c6d",
+  "--clr-primary-a20": "#ce647e",
+  "--clr-primary-a30": "#d77b8f",
+  "--clr-primary-a40": "#df91a1",
+  "--clr-primary-a50": "#e7a7b3",
+
+  /** Theme surface colors */
+  "--clr-surface-a0": "#211f1f",
+  "--clr-surface-a10": "#363434",
+  "--clr-surface-a20": "#4c4a4a",
+  "--clr-surface-a30": "#636161",
+  "--clr-surface-a40": "#7b7979",
+  "--clr-surface-a50": "#949393",
+
+  /** Theme tonal surface colors */
+  "--clr-surface-tonal-a0": "#2f2325",
+  "--clr-surface-tonal-a10": "#433839",
+  "--clr-surface-tonal-a20": "#584d4f",
+  "--clr-surface-tonal-a30": "#6e6466",
+  "--clr-surface-tonal-a40": "#857c7d",
+  "--clr-surface-tonal-a50": "#9c9596"
+},
+
   colors: {
-    primary: "#3b82f6",
-    secondary: "#1e40af",
-    background: "#ffffff",
-    accent: "#f59e0b"
+    primary: "#ba2f5d",      // clr-primary-a0
+    secondary: "#184e77",    // Secondary brand color
+    background: "#f5f5dc",   // Page background (light mode)
+    accent1: "#f59e0b",      // First accent color
+    accent2: "#10b981",      // Second accent color
+    accent3: "#8b5cf6"       // Third accent color
+  },
+
+  typography: {
+    bodyFont: "'Inter', system-ui, sans-serif",
+    headerFont: "'Poppins', 'Inter', sans-serif",
+    monoFont: "'JetBrains Mono', 'Fira Code', monospace"
   },
 
   seo: {
     title: "Your Business - Professional Services",
-    description: "We provide professional services to help your business succeed and grow."
-  },
-
-  content: {
-    hero: {
-      title: "Welcome to Your Business",
-      subtitle: "We provide professional services to help your business succeed and grow.",
-      cta: "Get Started"
-    },
-
-    services: [
-      {
-        icon: "💼",
-        title: "Business Consulting",
-        description: "Strategic guidance to help your business thrive in today's competitive market."
-      },
-      {
-        icon: "📈",
-        title: "Growth Strategy",
-        description: "Develop and implement strategies to scale your business effectively."
-      },
-      {
-        icon: "🎯",
-        title: "Marketing Solutions",
-        description: "Comprehensive marketing strategies to reach your target audience."
-      }
-    ]
+    description: "We provide professional services to help your business succeed and grow.",
+    keywords: "business, consulting, professional services",
+    author: "Your Business",
+    ogImage: "/og-image.jpg"
   },
 
   contact: {
@@ -50,7 +65,9 @@ export const clientConfig = {
     address: "123 Business St, City, State 12345",
     social: {
       linkedin: "https://linkedin.com/company/yourbusiness",
-      twitter: "https://twitter.com/yourbusiness"
+      twitter: "https://twitter.com/yourbusiness",
+      facebook: "https://facebook.com/yourbusiness",
+      instagram: "https://instagram.com/yourbusiness"
     }
   }
 };

@@ -1,0 +1,81 @@
+/* Dark Theme Generator || From colorffy.com */ 
+ :root {
+/** Primary Colors */
+--clr-primary-a0: #eb1e5c;
+--clr-primary-a10: #f1486c;
+--clr-primary-a20: #f6657d;
+--clr-primary-a30: #fb7e8e;
+--clr-primary-a40: #fe95a0;
+--clr-primary-a50: #ffabb2;
+
+/** Surface Colors */
+--clr-surface-a0: #121212;
+--clr-surface-a10: #282828;
+--clr-surface-a20: #3f3f3f;
+--clr-surface-a30: #575757;
+--clr-surface-a40: #717171;
+--clr-surface-a50: #8b8b8b;
+
+/** Mixed Colors */
+--clr-surface-tonal-a0: #261819;
+--clr-surface-tonal-a10: #3b2d2e;
+--clr-surface-tonal-a20: #514444;
+--clr-surface-tonal-a30: #675c5c;
+--clr-surface-tonal-a40: #7f7575;
+--clr-surface-tonal-a50: #978f8f;
+
+}
+.bg-primary-a0 {
+ background-color: var(--clr-primary-a0);
+}
+.bg-primary-a10 {
+ background-color: var(--clr-primary-a10);
+}
+.bg-primary-a20 {
+ background-color: var(--clr-primary-a20);
+}
+.bg-primary-a30 {
+ background-color: var(--clr-primary-a30);
+}
+.bg-primary-a40 {
+ background-color: var(--clr-primary-a40);
+}
+.bg-primary-a50 {
+ background-color: var(--clr-primary-a50);
+}
+.bg-surface-a0 {
+ background-color: var(--clr-surface-a0);
+}
+.bg-surface-a10 {
+ background-color: var(--clr-surface-a10);
+}
+.bg-surface-a20 {
+ background-color: var(--clr-surface-a20);
+}
+.bg-surface-a30 {
+ background-color: var(--clr-surface-a30);
+}
+.bg-surface-a40 {
+ background-color: var(--clr-surface-a40);
+}
+.bg-surface-a50 {
+ background-color: var(--clr-surface-a50);
+}
+.bg-surface-tonal-a0 {
+ background-color: var(--clr-surface-tonal-a0);
+}
+.bg-surface-tonal-a10 {
+ background-color: var(--clr-surface-tonal-a10);
+}
+.bg-surface-tonal-a20 {
+ background-color: var(--clr-surface-tonal-a20);
+}
+.bg-surface-tonal-a30 {
+ background-color: var(--clr-surface-tonal-a30);
+}
+.bg-surface-tonal-a40 {
+ background-color: var(--clr-surface-tonal-a40);
+}
+.bg-surface-tonal-a50 {
+ background-color: var(--clr-surface-tonal-a50);
+}
