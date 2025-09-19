@@ -76,19 +76,17 @@ const buttonClass = `link-button link-button--${variant} link-button--${size} ${
     left: 100%;
   }
 
-  /* Primary variant - Using theme tokens */
+  /* Primary variant - Using client config tokens */
   .link-button--primary {
-    background: var(--theme-primary, var(--color-primary));
-    color: var(--theme-text, var(--color-white));
-    border: 2px solid var(--theme-primary, var(--color-primary));
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
   }
 
   .link-button--primary:hover {
-    background: var(--color-primary-hover, var(--theme-primary, var(--color-primary)));
-    color: var(--theme-text, var(--color-white));
-    border-color: var(--color-primary-hover, var(--theme-primary, var(--color-primary)));
-    letter-spacing: 2px;
-    transform: translateY(-2px);
+    background: var(--color-primary-hover, color-mix(in srgb, var(--color-primary) 90%, black 10%));
+    color: var(--color-white);
+    border-color: var(--color-primary-hover, color-mix(in srgb, var(--color-primary) 90%, black 10%));
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.15),
       0 2px 8px rgba(0, 0, 0, 0.1);
@@ -101,19 +99,17 @@ const buttonClass = `link-button link-button--${variant} link-button--${size} ${
       inset 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
-  /* Secondary variant - Using theme tokens */
+  /* Secondary variant - Using client config tokens */
   .link-button--secondary {
     background: var(--theme-surface, transparent);
-    color: var(--theme-primary, var(--color-primary));
-    border: 2px solid var(--theme-primary, var(--color-primary));
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
   }
 
   .link-button--secondary:hover {
-    background: var(--theme-primary, var(--color-primary));
-    color: var(--theme-text, var(--color-white));
-    border-color: var(--theme-primary, var(--color-primary));
-    letter-spacing: 2px;
-    transform: translateY(-2px);
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.15),
       0 2px 8px rgba(0, 0, 0, 0.1);
@@ -135,19 +131,11 @@ const buttonClass = `link-button link-button--${variant} link-button--${size} ${
     min-width: 120px; /* Prevent jumping */
   }
 
-  .link-button--small:hover {
-    letter-spacing: 2px;
-  }
-
   .link-button--medium {
     padding: 0 2em;
     height: 50px;
     font-size: var(--font-size-lg);
     min-width: 160px; /* Prevent jumping */
-  }
-
-  .link-button--medium:hover {
-    letter-spacing: 4px;
   }
 
   .link-button--large {
@@ -158,19 +146,15 @@ const buttonClass = `link-button link-button--${variant} link-button--${size} ${
     min-width: 200px; /* Prevent jumping */
   }
 
-  .link-button--large:hover {
-    letter-spacing: 5px;
-  }
-
   /* Focus states for accessibility */
   .link-button:focus-visible {
-    outline: 2px solid var(--theme-primary, var(--color-primary));
+    outline: 2px solid var(--color-primary);
     outline-offset: 3px;
     transform: translateY(-2px);
     box-shadow:
       0 4px 16px rgba(0, 0, 0, 0.15),
       0 2px 8px rgba(0, 0, 0, 0.1),
-      0 0 0 2px var(--theme-primary, var(--color-primary));
+      0 0 0 2px var(--color-primary);
   }
 
   .link-button:focus:not(:focus-visible) {
@@ -215,8 +199,5 @@ const buttonClass = `link-button link-button--${variant} link-button--${size} ${
       letter-spacing: 2px;
     }
 
-    .link-button--large:hover {
-      letter-spacing: 3px;
-    }
   }
 </style>

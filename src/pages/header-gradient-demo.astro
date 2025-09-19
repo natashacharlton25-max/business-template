@@ -1,0 +1,135 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import LinkButton from '../components/ui/buttons/LinkButton.astro';
+---
+
+<Layout title="Gradient Header Demo">
+  <PageHeader title="Gradient Header" variant="gradient" />
+
+  <div class="container section page-content">
+    <div class="demo-content">
+
+      <section class="demo-section">
+        <h1 class="display-2">Gradient Header Demo</h1>
+        <p class="body-1">This page demonstrates the gradient header variant with a beautiful brand gradient using primary, secondary, and accent1 colors from your client.config.js.</p>
+      </section>
+
+      <section class="demo-section">
+        <h2>About This Variant</h2>
+        <ul class="feature-list">
+          <li>Multi-color brand gradient background</li>
+          <li>Uses primary + secondary + accent1 colors</li>
+          <li>White text for optimal contrast</li>
+          <li>Dynamic, modern appearance</li>
+          <li>Automatically updates with brand colors</li>
+        </ul>
+      </section>
+
+      <section class="demo-section">
+        <h2>Brand Gradient</h2>
+        <p class="body-2">The gradient flows from your primary brand color through secondary to accent1, creating a sophisticated color transition that represents your complete brand palette.</p>
+
+        <div class="gradient-example">
+          <div class="gradient-bar"></div>
+          <div class="color-labels">
+            <span>Primary</span>
+            <span>Secondary</span>
+            <span>Accent1</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <h2>Try Other Variants</h2>
+        <div class="demo-buttons">
+          <LinkButton text="Line Header" variant="secondary" size="medium" href="/header-demo" />
+          <LinkButton text="Filled Header" variant="primary" size="medium" href="/header-filled-demo" />
+          <LinkButton text="Back to Theme Test" variant="secondary" size="medium" href="/theme-test" />
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 80px;
+  }
+
+  .demo-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .demo-section {
+    margin-bottom: var(--space-4xl);
+  }
+
+  .demo-section h1 {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .demo-section h2 {
+    margin-bottom: var(--space-xl);
+    color: var(--color-primary);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--theme-border);
+    color: var(--theme-text);
+  }
+
+  .feature-list li:before {
+    content: "✓";
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-right: var(--space-md);
+  }
+
+  .gradient-example {
+    margin: var(--space-xl) 0;
+  }
+
+  .gradient-bar {
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent1));
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-md);
+  }
+
+  .color-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+    color: var(--theme-text-light);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .demo-buttons {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 768px) {
+    .page-content {
+      padding-top: 65px;
+    }
+
+    .demo-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

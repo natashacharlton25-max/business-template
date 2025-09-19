@@ -1,11 +1,15 @@
 ---
 import Layout from '../components/layout/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
 import LinkButton from '../components/ui/buttons/LinkButton.astro';
-import { Button, Card, Notification } from 'accessible-astro-components';
+import { Card, Notification } from 'accessible-astro-components';
+import AccessibilityButton from '../components/ui/buttons/AccessibilityButton.astro';
 ---
 
 <Layout title="Theme Test - Light & Dark Mode">
-  <div class="container section">
+  <PageHeader title="Theme Test" />
+
+  <div class="container section page-content">
     <div class="theme-test-page">
 
       <!-- Header Section -->
@@ -46,20 +50,115 @@ import { Button, Card, Notification } from 'accessible-astro-components';
 
       <!-- Typography Test -->
       <section class="test-section">
-        <h2>Typography</h2>
-        <h1>Heading 1 - Header Font</h1>
-        <h2>Heading 2 - Header Font</h2>
-        <h3>Heading 3 - Header Font</h3>
-        <p>Regular paragraph text using the body font. This text should adapt to light and dark themes.</p>
-        <p class="text-light">Secondary text with lighter color for less important information.</p>
-        <p class="text-muted">Muted text for subtle information and captions.</p>
+        <h2>Typography System</h2>
+
+        <!-- Display & Headings -->
+        <div class="typography-group">
+          <h3>Display Text</h3>
+          <div class="display-1">Display 1 - Bold Hero</div>
+          <div class="display-1-caps">Display 1 Caps - Brand Statement</div>
+          <div class="display-1-thin">Display 1 Thin - Elegant Hero</div>
+          <div class="display-2">Display 2 - Strong Title</div>
+          <div class="display-2-caps">Display 2 Caps - Call to Action</div>
+          <div class="display-2-thin">Display 2 Thin - Refined Message</div>
+        </div>
+
+        <!-- Headings -->
+        <div class="typography-group">
+          <h3>Headings & Variations</h3>
+          <h1>Heading 1 - Standard</h1>
+          <div class="h1-caps">H1 Caps - Brand Title</div>
+          <div class="h1-thin">H1 Thin - Sophisticated Header</div>
+          <h2>Heading 2 - Standard</h2>
+          <div class="h2-caps">H2 Caps - Section Label</div>
+          <div class="h2-thin">H2 Thin - Elegant Section</div>
+          <h3>Heading 3 - Standard</h3>
+          <div class="h3-caps">H3 Caps - Category Title</div>
+          <div class="h3-thin">H3 Thin - Subtle Heading</div>
+        </div>
+
+        <!-- Body Text -->
+        <div class="typography-group">
+          <h3>Body Text & Variations</h3>
+          <p class="body-1">Body 1 - Standard large text for introductions</p>
+          <p class="body-1-caps">Body 1 Caps - Attention-grabbing intro</p>
+          <p class="body-1-thin">Body 1 Thin - Elegant and refined large text</p>
+          <p class="body-2">Body 2 - Regular paragraph text for content</p>
+          <p class="body-2-caps">Body 2 Caps - Important highlighted text</p>
+          <p class="body-2-bold">Body 2 Bold - Emphasized content text</p>
+          <p class="body-small">Body Small - Secondary information</p>
+          <p class="body-small-caps">Body Small Caps - Micro labels and tags</p>
+        </div>
+
+        <!-- Subtitles -->
+        <div class="typography-group">
+          <h3>Subtitles & Meta</h3>
+          <div class="subtitle-1">Subtitle 1 - Large subtitle for sections</div>
+          <div class="subtitle-2">Subtitle 2 - Medium subtitle for components</div>
+          <div class="subtitle-small">Subtitle Small - Micro labels</div>
+          <div class="meta-text">Meta Text - Timestamps, categories</div>
+          <div class="caption">Caption - Image descriptions and fine print</div>
+        </div>
+
+        <!-- Quotes -->
+        <div class="typography-group">
+          <h3>Quotes & Special Text</h3>
+          <blockquote class="quote">This is a large quote for testimonials and important statements.</blockquote>
+          <p class="quote-small">This is a smaller quote for inline testimonials.</p>
+        </div>
+
+        <!-- Code -->
+        <div class="typography-group">
+          <h3>Code & Monospace</h3>
+          <p>Inline code: <code class="code-inline">const theme = 'awesome';</code></p>
+          <pre class="code-block">// Code block example
+const brandColors = &#123;
+  primary: '&#123;clientConfig.colors.primary&#125;',
+  secondary: '&#123;clientConfig.colors.secondary&#125;'
+&#125;;</pre>
+        </div>
+
+        <!-- Brand Colors -->
+        <div class="typography-group">
+          <h3>Brand Text Colors</h3>
+          <p class="text-brand">Primary brand color text</p>
+          <p class="text-brand-secondary">Secondary brand color text</p>
+          <p class="text-brand-accent1">Accent 1 brand color text</p>
+          <p class="text-brand-accent2">Accent 2 brand color text</p>
+          <p class="text-brand-accent3">Accent 3 brand color text</p>
+        </div>
+
+        <!-- Font Weights -->
+        <div class="typography-group">
+          <h3>Font Weights</h3>
+          <p class="font-thin">Thin weight text</p>
+          <p class="font-light">Light weight text</p>
+          <p class="font-normal">Normal weight text</p>
+          <p class="font-medium">Medium weight text</p>
+          <p class="font-semibold">Semibold weight text</p>
+          <p class="font-bold">Bold weight text</p>
+          <p class="font-extrabold">Extra bold weight text</p>
+          <p class="font-black">Black weight text</p>
+        </div>
+
+        <!-- Typography Utilities -->
+        <div class="typography-group">
+          <h3>Typography Utilities</h3>
+          <p class="uppercase tracking-wider">Uppercase with wide tracking</p>
+          <p class="capitalize">Capitalized text example</p>
+          <p class="tracking-tight">Text with tight letter spacing</p>
+          <p class="tracking-wide">Text with wide letter spacing</p>
+          <p class="leading-tight">Text with tight line height for compact layouts.</p>
+          <p class="leading-relaxed">Text with relaxed line height for better readability and breathing room.</p>
+        </div>
+
       </section>
 
       <!-- Button Tests -->
       <section class="test-section">
         <h2>Buttons</h2>
 
-        <h3>LinkButton Components</h3>
+        <h3>LinkButton Components (with glint animation)</h3>
         <div class="button-group">
           <LinkButton text="Primary Button" variant="primary" size="medium" />
           <LinkButton text="Secondary Button" variant="secondary" size="medium" />
@@ -67,12 +166,13 @@ import { Button, Card, Notification } from 'accessible-astro-components';
           <LinkButton text="Large Secondary" variant="secondary" size="large" />
         </div>
 
-        <h3>Accessible Astro Buttons</h3>
+        <h3>AccessibilityButton Component (no glint, uses client config colors)</h3>
         <div class="button-group">
-          <Button>Default Button</Button>
-          <Button variant="secondary">Secondary Button</Button>
-          <Button variant="outline">Outline Button</Button>
+          <AccessibilityButton text="Accessibile" />
+          <AccessibilityButton>Accessibile</AccessibilityButton>
+          <AccessibilityButton text="Disabled Button" disabled />
         </div>
+
       </section>
 
       <!-- Card Tests -->
@@ -82,29 +182,48 @@ import { Button, Card, Notification } from 'accessible-astro-components';
           <Card>
             <h3>Card Title</h3>
             <p>This card should adapt to both light and dark themes with proper surface colors and text contrast.</p>
-            <Button>Card Action</Button>
+            <LinkButton text="Card Action" variant="primary" size="medium" />
           </Card>
 
           <Card>
             <h3>Another Card</h3>
             <p>Cards use theme surface colors that change between light and dark mode.</p>
-            <Button variant="secondary">Secondary Action</Button>
+            <LinkButton text="Secondary Action" variant="secondary" size="medium" />
           </Card>
 
           <Card>
             <h3>Third Card</h3>
             <p>Hover over cards to see the elevated surface effect.</p>
-            <Button variant="outline">Outline Action</Button>
+            <LinkButton text="Outline Action" variant="secondary" size="medium" />
           </Card>
         </div>
       </section>
 
       <!-- Notifications Test -->
       <section class="test-section">
-        <h2>Notifications</h2>
-        <Notification type="info">
-          <p><strong>Info:</strong> This is an info notification that adapts to the current theme.</p>
-        </Notification>
+        <h2>Notifications (Brand Colors)</h2>
+
+        <div class="notification-grid">
+          <Notification>
+            <p><strong>Default:</strong> Uses primary brand color from client config.</p>
+          </Notification>
+
+          <Notification type="info">
+            <p><strong>Info:</strong> Uses accent1 brand color for informational messages.</p>
+          </Notification>
+
+          <Notification type="success">
+            <p><strong>Success:</strong> Uses accent2 brand color for success messages.</p>
+          </Notification>
+
+          <Notification type="warning">
+            <p><strong>Warning:</strong> Uses accent3 brand color for warning messages.</p>
+          </Notification>
+
+          <Notification type="error">
+            <p><strong>Error:</strong> Uses secondary brand color for error messages.</p>
+          </Notification>
+        </div>
       </section>
 
       <!-- Theme Information -->
@@ -129,6 +248,65 @@ import { Button, Card, Notification } from 'accessible-astro-components';
         </div>
       </section>
 
+    </div>
+
+    <!-- Real Content Example Section (no fancy testing styles) -->
+    <div class="content-example">
+      <div class="container">
+
+        <!-- Hero Section Example -->
+        <section class="hero-example">
+          <h1 class="display-1">Welcome to Our Business</h1>
+          <p class="subtitle-1">Professional services that deliver exceptional results</p>
+          <p class="body-1">This is an example of how your actual content will look with proper spacing, typography, and responsive behavior. No fancy hover effects or testing borders - just clean, professional layout.</p>
+          <div class="cta-buttons">
+            <LinkButton text="Get Started" variant="primary" size="large" href="#" />
+            <LinkButton text="Learn More" variant="secondary" size="large" href="#" />
+          </div>
+        </section>
+
+        <!-- Content Grid Example -->
+        <section class="content-grid-example">
+          <h2 class="h2-caps">Our Services</h2>
+          <p class="body-2">Here's how content looks in a standard grid layout with proper margins and breakpoints.</p>
+
+          <div class="services-grid">
+            <div class="service-card">
+              <h3>Web Development</h3>
+              <p class="body-2">Professional websites built with modern technologies and best practices.</p>
+              <AccessibilityButton text="Learn More" />
+            </div>
+
+            <div class="service-card">
+              <h3>Brand Design</h3>
+              <p class="body-2">Complete brand identity design that makes your business stand out.</p>
+              <AccessibilityButton text="Learn More" />
+            </div>
+
+            <div class="service-card">
+              <h3>Digital Marketing</h3>
+              <p class="body-2">Strategic marketing campaigns that drive results and growth.</p>
+              <AccessibilityButton text="Learn More" />
+            </div>
+          </div>
+        </section>
+
+        <!-- Text Content Example -->
+        <section class="text-content-example">
+          <h2>About Our Company</h2>
+          <div class="text-columns">
+            <div class="column">
+              <p class="body-1">This section demonstrates how longer text content flows and breaks across different screen sizes. The typography system ensures consistent reading experience.</p>
+              <p class="body-2">Regular paragraphs maintain proper line height and spacing for optimal readability. The responsive design adapts seamlessly from desktop to mobile.</p>
+            </div>
+            <div class="column">
+              <p class="body-2">Secondary columns show how content can be organized in multi-column layouts while maintaining proper margins and spacing.</p>
+              <p class="body-small">Smaller text is used for supplementary information and details that don't need as much visual weight.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
     </div>
   </div>
 </Layout>
@@ -273,6 +451,130 @@ import { Button, Card, Notification } from 'accessible-astro-components';
     opacity: 0.7;
   }
 
+  .typography-group {
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-lg);
+    background: var(--theme-surface-elevated);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--theme-border);
+  }
+
+  .typography-group > h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--space-lg);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .typography-group > * + * {
+    margin-top: var(--space-md);
+  }
+
+  .display-1, .display-2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .notification-grid {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
+  }
+
+  /* Page content offset for fixed header */
+  .page-content {
+    padding-top: 80px; /* Account for thinner fixed header */
+  }
+
+  /* Real Content Example Styles (clean, no fancy effects) */
+  .content-example {
+    margin-top: var(--space-5xl);
+    padding-top: var(--space-5xl);
+    border-top: 1px solid var(--theme-border);
+    background: var(--theme-surface);
+  }
+
+  .hero-example {
+    text-align: center;
+    padding: var(--space-5xl) 0;
+    margin-bottom: var(--space-4xl);
+  }
+
+  .hero-example h1 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .hero-example .subtitle-1 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .hero-example .body-1 {
+    max-width: 600px;
+    margin: 0 auto var(--space-2xl);
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .content-grid-example {
+    margin-bottom: var(--space-5xl);
+  }
+
+  .content-grid-example h2 {
+    margin-bottom: var(--space-md);
+  }
+
+  .content-grid-example > p {
+    margin-bottom: var(--space-2xl);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+  }
+
+  .service-card {
+    padding: var(--space-2xl);
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .service-card h3 {
+    margin-bottom: var(--space-lg);
+    color: var(--color-primary);
+  }
+
+  .service-card p {
+    margin-bottom: var(--space-xl);
+  }
+
+  .text-content-example {
+    margin-bottom: var(--space-5xl);
+  }
+
+  .text-content-example h2 {
+    margin-bottom: var(--space-xl);
+  }
+
+  .text-columns {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+  }
+
+  .column p {
+    margin-bottom: var(--space-lg);
+  }
+
+  .column p:last-child {
+    margin-bottom: 0;
+  }
+
   @media (max-width: 768px) {
     .test-section {
       padding: var(--space-lg);
@@ -289,6 +591,41 @@ import { Button, Card, Notification } from 'accessible-astro-components';
 
     .theme-info {
       grid-template-columns: 1fr;
+    }
+
+    /* Real Content Mobile Styles */
+    .hero-example {
+      padding: var(--space-3xl) 0;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .service-card {
+      padding: var(--space-xl);
+    }
+
+    .text-columns {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    /* Adjust page content padding for tablet header */
+    .page-content {
+      padding-top: 70px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .page-content {
+      padding-top: 65px;
     }
   }
 </style>

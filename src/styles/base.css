@@ -3,9 +3,9 @@
 :root {
   /* Layout & Spacing - Fixed values */
   --max-width: 1400px;
-  --margin-desktop: 2rem;
-  --margin-tablet: 1.5rem;
-  --margin-mobile: 1rem;
+  --margin-desktop: 3rem;
+  --margin-tablet: 2.5rem;
+  --margin-mobile: 1.5rem;
 
   /* Spacing Scale - Fixed system */
   --space-xs: 0.25rem;   /* 4px */

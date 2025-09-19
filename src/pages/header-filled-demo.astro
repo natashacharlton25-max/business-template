@@ -1,0 +1,102 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import LinkButton from '../components/ui/buttons/LinkButton.astro';
+---
+
+<Layout title="Filled Header Demo">
+  <PageHeader title="Filled Header" variant="filled" />
+
+  <div class="container section page-content">
+    <div class="demo-content">
+
+      <section class="demo-section">
+        <h1 class="display-2">Filled Header Demo</h1>
+        <p class="body-1">This page shows the filled header variant with solid primary brand color background and white text. Perfect for bold, impactful page headers.</p>
+      </section>
+
+      <section class="demo-section">
+        <h2>About This Variant</h2>
+        <ul class="feature-list">
+          <li>Solid primary brand color background</li>
+          <li>White text for contrast</li>
+          <li>No border line needed</li>
+          <li>Bold, professional appearance</li>
+          <li>Dark mode compatible</li>
+        </ul>
+      </section>
+
+      <section class="demo-section">
+        <h2>Try Other Variants</h2>
+        <div class="demo-buttons">
+          <LinkButton text="Line Header" variant="secondary" size="medium" href="/header-demo" />
+          <LinkButton text="Gradient Header" variant="primary" size="medium" href="/header-gradient-demo" />
+          <LinkButton text="Back to Theme Test" variant="secondary" size="medium" href="/theme-test" />
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 80px;
+  }
+
+  .demo-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .demo-section {
+    margin-bottom: var(--space-4xl);
+  }
+
+  .demo-section h1 {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .demo-section h2 {
+    margin-bottom: var(--space-xl);
+    color: var(--color-primary);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .feature-list li {
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--theme-border);
+    color: var(--theme-text);
+  }
+
+  .feature-list li:before {
+    content: "✓";
+    color: var(--color-primary);
+    font-weight: bold;
+    margin-right: var(--space-md);
+  }
+
+  .demo-buttons {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 768px) {
+    .page-content {
+      padding-top: 65px;
+    }
+
+    .demo-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

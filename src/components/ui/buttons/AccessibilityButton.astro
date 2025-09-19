@@ -1,0 +1,149 @@
+---
+// AccessibilityButton.astro - Styled like LinkButton large secondary (no glint animation)
+export interface Props {
+  text?: string;
+  href?: string;
+  target?: '_blank' | '_self' | '_parent' | '_top';
+  className?: string;
+  type?: 'button' | 'submit' | 'reset';
+  disabled?: boolean;
+  onClick?: string;
+}
+
+const {
+  text,
+  href,
+  target = "_self",
+  className = "",
+  type = "button",
+  disabled = false,
+  onClick
+} = Astro.props;
+
+const buttonClass = `brand-button ${className}`;
+---
+
+{href && !disabled ? (
+  <a href={href} target={target} class={buttonClass}>
+    {text || <slot />}
+  </a>
+) : (
+  <button
+    class={buttonClass}
+    type={type}
+    disabled={disabled}
+    onclick={onClick}
+  >
+    {text || <slot />}
+  </button>
+)}
+
+<style>
+  .brand-button {
+    /* Base styling like LinkButton large */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2.5em;
+    height: 60px;
+    font-size: var(--font-size-xl);
+    font-family: var(--font-body);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 3px;
+    min-width: 200px;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+
+    /* Secondary variant styling (like LinkButton secondary) */
+    background: var(--theme-surface, transparent);
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+
+    /* Modern elevated shadow */
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.12),
+      0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  /* NO glint animation - this is the key difference from LinkButton */
+
+  .brand-button:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    letter-spacing: 5px;
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .brand-button:active {
+    transform: translateY(0);
+    box-shadow:
+      0 1px 4px rgba(0, 0, 0, 0.1),
+      inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Disabled state */
+  .brand-button:disabled {
+    background: var(--theme-text-muted);
+    color: var(--color-white);
+    border-color: var(--theme-text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
+    letter-spacing: 3px;
+  }
+
+  /* Focus states for accessibility */
+  .brand-button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.15),
+      0 2px 8px rgba(0, 0, 0, 0.1),
+      0 0 0 2px var(--color-primary);
+  }
+
+  .brand-button:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Accessibility improvements for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .brand-button {
+      transition: none;
+    }
+
+    .brand-button:hover,
+    .brand-button:active {
+      transform: none;
+    }
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .brand-button {
+      height: 52px;
+      font-size: var(--font-size-lg);
+      padding: 0 2em;
+      letter-spacing: 2px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .brand-button:hover {
+      letter-spacing: 3px;
+    }
+  }
+</style>

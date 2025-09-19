@@ -1,0 +1,198 @@
+---
+import Layout from '../components/layout/Layout.astro';
+import PageHeader from '../components/layout/PageHeader.astro';
+import LinkButton from '../components/ui/buttons/LinkButton.astro';
+---
+
+<Layout title="Header Demo - All Variants">
+  <PageHeader title="Header Demo" variant="line" />
+
+  <div class="container section page-content">
+    <div class="header-demo-page">
+
+      <section class="demo-section">
+        <h1 class="display-2">PageHeader Variants</h1>
+        <p class="body-1">This page demonstrates all three PageHeader variants using your brand colors from client.config.js. The current header above is the "line" variant.</p>
+      </section>
+
+      <section class="demo-section">
+        <h2>Three Header Variants</h2>
+
+        <div class="variant-examples">
+          <div class="variant-card">
+            <h3>Line Header (Current)</h3>
+            <p class="body-2">Background color with primary brand color line border.</p>
+            <div class="variant-preview line-preview">
+              <div class="mock-header line-mock">
+                <span class="mock-title">PAGE TITLE</span>
+              </div>
+            </div>
+            <p class="code-example"><code>&lt;PageHeader title="Page" variant="line" /&gt;</code></p>
+          </div>
+
+          <div class="variant-card">
+            <h3>Filled Header</h3>
+            <p class="body-2">Solid primary brand color background with white text.</p>
+            <div class="variant-preview filled-preview">
+              <div class="mock-header filled-mock">
+                <span class="mock-title">PAGE TITLE</span>
+              </div>
+            </div>
+            <p class="code-example"><code>&lt;PageHeader title="Page" variant="filled" /&gt;</code></p>
+          </div>
+
+          <div class="variant-card">
+            <h3>Gradient Header</h3>
+            <p class="body-2">Brand gradient using primary, secondary, and accent1 colors.</p>
+            <div class="variant-preview gradient-preview">
+              <div class="mock-header gradient-mock">
+                <span class="mock-title">PAGE TITLE</span>
+              </div>
+            </div>
+            <p class="code-example"><code>&lt;PageHeader title="Page" variant="gradient" /&gt;</code></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="demo-section">
+        <h2>Test Different Variants</h2>
+        <p class="body-2">Click the buttons below to navigate to pages with different header variants:</p>
+
+        <div class="demo-buttons">
+          <LinkButton text="Line Header (Current)" variant="secondary" size="medium" href="/header-demo" />
+          <LinkButton text="Filled Header" variant="primary" size="medium" href="/header-filled-demo" />
+          <LinkButton text="Gradient Header" variant="primary" size="medium" href="/header-gradient-demo" />
+        </div>
+      </section>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .page-content {
+    padding-top: 80px;
+  }
+
+  .header-demo-page {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .demo-section {
+    margin-bottom: var(--space-4xl);
+  }
+
+  .demo-section h1 {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+  }
+
+  .demo-section h2 {
+    margin-bottom: var(--space-xl);
+    color: var(--color-primary);
+  }
+
+  .variant-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-2xl);
+    margin: var(--space-2xl) 0;
+  }
+
+  .variant-card {
+    padding: var(--space-xl);
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .variant-card h3 {
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+  }
+
+  .variant-card p {
+    margin-bottom: var(--space-lg);
+  }
+
+  .variant-preview {
+    margin: var(--space-lg) 0;
+    border-radius: var(--radius-base);
+    overflow: hidden;
+    border: 1px solid var(--theme-border);
+  }
+
+  .mock-header {
+    padding: var(--space-md) var(--space-lg);
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mock-title {
+    font-family: var(--font-header);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-thin);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* Mock header variants */
+  .line-mock {
+    background: var(--color-background);
+    border-bottom: 1px solid var(--color-primary);
+  }
+
+  .line-mock .mock-title {
+    color: var(--color-primary);
+  }
+
+  .filled-mock {
+    background: var(--color-primary);
+  }
+
+  .filled-mock .mock-title {
+    color: var(--color-white);
+  }
+
+  .gradient-mock {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent1));
+  }
+
+  .gradient-mock .mock-title {
+    color: var(--color-white);
+  }
+
+  .code-example {
+    background: var(--theme-surface-elevated);
+    padding: var(--space-sm);
+    border-radius: var(--radius-base);
+    font-size: var(--font-size-sm);
+  }
+
+  .demo-buttons {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 768px) {
+    .page-content {
+      padding-top: 65px;
+    }
+
+    .variant-examples {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .demo-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
