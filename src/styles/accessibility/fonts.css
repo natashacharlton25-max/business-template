@@ -83,7 +83,7 @@ html[data-accessibility-font="system"] p,
 html[data-accessibility-font="system"] div,
 html[data-accessibility-font="system"] span,
 html[data-accessibility-font="system"] li {
-  font-family: var(--accessibility-font-system) !important;
+  font-family: var(--accessibility-font-system);
 }
 
 /* OpenDyslexic Font Theme */
@@ -104,7 +104,7 @@ html[data-accessibility-font="dyslexic"] p,
 html[data-accessibility-font="dyslexic"] div,
 html[data-accessibility-font="dyslexic"] span,
 html[data-accessibility-font="dyslexic"] li {
-  font-family: var(--accessibility-font-dyslexic) !important;
+  font-family: var(--accessibility-font-dyslexic);
 }
 
 /* Lexend Font Theme */
@@ -125,7 +125,7 @@ html[data-accessibility-font="lexend"] p,
 html[data-accessibility-font="lexend"] div,
 html[data-accessibility-font="lexend"] span,
 html[data-accessibility-font="lexend"] li {
-  font-family: var(--accessibility-font-lexend) !important;
+  font-family: var(--accessibility-font-lexend);
 }
 
 /* High Readability Font Theme */
@@ -146,25 +146,25 @@ html[data-accessibility-font="readable"] p,
 html[data-accessibility-font="readable"] div,
 html[data-accessibility-font="readable"] span,
 html[data-accessibility-font="readable"] li {
-  font-family: var(--accessibility-font-readable) !important;
+  font-family: var(--accessibility-font-readable);
 }
 
 /* ========================================
    Font Accessibility Enhancements
    ======================================== */
 
-/* Enhanced letter spacing for dyslexic fonts */
-html[data-accessibility-font="dyslexic"] body *,
-html[data-accessibility-font="dyslexic"] h1,
-html[data-accessibility-font="dyslexic"] h2,
-html[data-accessibility-font="dyslexic"] h3,
-html[data-accessibility-font="dyslexic"] h4,
-html[data-accessibility-font="dyslexic"] h5,
-html[data-accessibility-font="dyslexic"] h6,
-html[data-accessibility-font="dyslexic"] p,
-html[data-accessibility-font="dyslexic"] div,
-html[data-accessibility-font="dyslexic"] span,
-html[data-accessibility-font="dyslexic"] li {
+/* Enhanced letter spacing for dyslexic fonts - only when no char spacing control is active */
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) body *,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) h1,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) h2,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) h3,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) h4,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) h5,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) h6,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) p,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) div,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) span,
+html[data-accessibility-font="dyslexic"]:not([data-accessibility-char]) li {
   letter-spacing: 0.025em;
 }
 
