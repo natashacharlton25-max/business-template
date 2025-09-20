@@ -6,6 +6,10 @@ import { Card, Notification } from 'accessible-astro-components';
 import AccessibilityButton from '../components/ui/buttons/AccessibilityButton.astro';
 ---
 
+<style>
+  @import '../styles/accessibility/accessibility-tokens.css';
+</style>
+
 <Layout title="Theme Test - Light & Dark Mode">
   <PageHeader title="Theme Test" />
 
@@ -248,7 +252,6 @@ const brandColors = &#123;
         </div>
       </section>
 
-    </div>
 
     <!-- Real Content Example Section (no fancy testing styles) -->
     <div class="content-example">
@@ -628,4 +631,236 @@ const brandColors = &#123;
       padding-top: 65px;
     }
   }
+
+  /* Accessibility Testing Section */
+  .accessibility-testing {
+    margin-top: var(--space-xl);
+  }
+
+  .test-info {
+    padding: var(--space-lg);
+    background: var(--theme-surface-elevated);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--theme-border);
+    margin-bottom: var(--space-lg);
+  }
+
+  .test-info h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--space-md);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .test-info ul {
+    list-style-position: inside;
+    line-height: var(--line-height-relaxed);
+  }
+
+  .test-info li {
+    margin-bottom: var(--space-sm);
+    color: var(--theme-text-light);
+  }
+
+  .test-status {
+    padding: var(--space-md);
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
+
+  .test-controls {
+    padding: var(--space-lg);
+    background: var(--theme-surface-elevated);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--theme-border);
+    margin-bottom: var(--space-lg);
+  }
+
+  .test-controls h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .test-controls p {
+    margin-bottom: var(--space-md);
+    color: var(--theme-text-light);
+  }
+
+  .control-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  .test-btn {
+    padding: var(--space-sm) var(--space-md);
+    background: var(--theme-surface);
+    border: 2px solid var(--theme-border);
+    border-radius: var(--radius-md);
+    color: var(--theme-text);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    white-space: nowrap;
+  }
+
+  .test-btn:hover {
+    border-color: var(--color-primary);
+    background: var(--theme-surface-elevated);
+    transform: translateY(-1px);
+  }
+
+  .test-btn.active {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .control-buttons {
+      justify-content: center;
+    }
+  }
+
 </style>
+
+<script>
+  // Simple Accessibility Manager - Background Colors Only
+  class SimpleAccessibilityManager {
+    constructor() {
+      this.settings = {
+        colorBackground: 'default'
+      };
+      this.init();
+    }
+
+    init() {
+      console.log('Simple accessibility manager initialized');
+    }
+
+    // Apply background color setting using CSS tokens
+    applyBackground(background) {
+      const html = document.documentElement;
+
+      console.log('Applying accessibility background:', background);
+
+      // Simply set the data attribute - CSS tokens handle the rest
+      if (background === 'default') {
+        html.removeAttribute('data-accessibility-bg');
+      } else {
+        html.setAttribute('data-accessibility-bg', background);
+      }
+
+      console.log('Applied accessibility background attribute:', background);
+    }
+
+    // Update setting
+    updateSetting(setting, value) {
+      console.log('updateSetting called with:', setting, value);
+      if (setting === 'colorBackground') {
+        this.settings.colorBackground = value;
+        this.applyBackground(value);
+      }
+    }
+
+    // Get current setting
+    getSetting(setting) {
+      return this.settings[setting];
+    }
+
+    // Reset all settings
+    resetSettings() {
+      this.settings.colorBackground = 'default';
+      this.applyBackground('default');
+    }
+  }
+
+  // Make testBackgroundColor a global function
+  window.testBackgroundColor = function(background) {
+    console.log('testBackgroundColor called with:', background);
+    const statusEl = document.getElementById('accessibility-test-status');
+
+    if (!statusEl) {
+      console.error('Status element not found');
+      return;
+    }
+
+    // Remove active class from all buttons
+    document.querySelectorAll('.test-btn').forEach(btn => btn.classList.remove('active'));
+
+    // Add active class to clicked button - use event.target if available
+    if (typeof event !== 'undefined' && event.target) {
+      event.target.classList.add('active');
+    }
+
+    // Apply background using simple accessibility manager
+    if (window.simpleAccessibilityManager) {
+      console.log('Accessibility manager found, updating setting');
+      window.simpleAccessibilityManager.updateSetting('colorBackground', background);
+
+      // Update status
+      const displayName = background === 'default' ? 'Default background' :
+                         background.charAt(0).toUpperCase() + background.slice(1).replace('-', ' ') + ' background';
+      statusEl.innerHTML = `<p><strong>Current:</strong> ${displayName}</p>`;
+    } else {
+      console.error('Accessibility manager not found');
+      statusEl.innerHTML = `<p><strong>Error:</strong> Accessibility manager not loaded</p>`;
+    }
+  };
+
+  // Initialize when DOM is loaded
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing accessibility manager');
+
+    try {
+      window.simpleAccessibilityManager = new SimpleAccessibilityManager();
+      console.log('Accessibility manager created successfully');
+
+      // Verify it's accessible globally
+      if (window.simpleAccessibilityManager) {
+        console.log('Accessibility manager is globally accessible');
+      }
+
+    } catch (error) {
+      console.error('Error creating accessibility manager:', error);
+    }
+
+    // Set up event listeners for background test buttons
+    const testButtons = document.querySelectorAll('.test-btn[data-background]');
+    console.log('Found test buttons:', testButtons.length);
+
+    testButtons.forEach(button => {
+      button.addEventListener('click', (event) => {
+        const background = button.getAttribute('data-background');
+        console.log('Button clicked, background:', background);
+
+        // Remove active class from all buttons
+        testButtons.forEach(btn => btn.classList.remove('active'));
+
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Call the test function
+        window.testBackgroundColor(background);
+      });
+    });
+
+    // Check if it loaded properly after a short delay
+    setTimeout(() => {
+      if (!window.simpleAccessibilityManager) {
+        console.error('Accessibility manager failed to load');
+        const statusEl = document.getElementById('accessibility-test-status');
+        if (statusEl) {
+          statusEl.innerHTML = `<p><strong>Error:</strong> Simple accessibility manager failed to load</p>`;
+        }
+      } else {
+        console.log('Accessibility manager loaded successfully');
+      }
+    }, 500);
+  });
+</script>
