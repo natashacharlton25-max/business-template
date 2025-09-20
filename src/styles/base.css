@@ -122,6 +122,8 @@ body {
 
 main {
   flex: 1;
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease;
 }
 
 /* Container System - Fixed layout */
@@ -130,17 +132,23 @@ main {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--margin-desktop);
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease;
 }
 
 @media (max-width: 1024px) {
   .container {
     padding: 0 var(--margin-tablet);
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
   }
 }
 
 @media (max-width: 768px) {
   .container {
     padding: 0 var(--margin-mobile);
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
   }
 }
 
@@ -173,26 +181,38 @@ main {
 /* Section Spacing - Fixed utilities */
 .section {
   padding: var(--space-3xl) 0;
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease;
 }
 
 .section-sm {
   padding: var(--space-2xl) 0;
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease;
 }
 
 .section-lg {
   padding: var(--space-5xl) 0;
+  background-color: var(--color-background);
+  transition: background-color 0.3s ease;
 }
 
 @media (max-width: 768px) {
   .section {
     padding: var(--space-2xl) 0;
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
   }
 
   .section-sm {
     padding: var(--space-xl) 0;
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
   }
 
   .section-lg {
     padding: var(--space-3xl) 0;
+    background-color: var(--color-background);
+    transition: background-color 0.3s ease;
   }
 }

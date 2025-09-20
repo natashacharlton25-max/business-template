@@ -177,6 +177,7 @@ const brandColors = &#123;
 
       </section>
 
+
       <!-- Card Tests -->
       <section class="test-section">
         <h2>Cards & Surfaces</h2>
@@ -728,8 +729,20 @@ const brandColors = &#123;
 </style>
 
 <script>
+  // Type declarations for Window interface extensions
+  declare global {
+    interface Window {
+      simpleAccessibilityManager: SimpleAccessibilityManager;
+      testBackgroundColor: (background: string) => void;
+    }
+  }
+
   // Simple Accessibility Manager - Background Colors Only
   class SimpleAccessibilityManager {
+    settings: {
+      colorBackground: string;
+    };
+
     constructor() {
       this.settings = {
         colorBackground: 'default'
@@ -742,23 +755,19 @@ const brandColors = &#123;
     }
 
     // Apply background color setting using CSS tokens
-    applyBackground(background) {
+    applyBackground(background: string) {
       const html = document.documentElement;
 
       console.log('Applying accessibility background:', background);
 
-      // Simply set the data attribute - CSS tokens handle the rest
-      if (background === 'default') {
-        html.removeAttribute('data-accessibility-bg');
-      } else {
-        html.setAttribute('data-accessibility-bg', background);
-      }
+      // Set the data attribute for all cases - CSS handles the default
+      html.setAttribute('data-accessibility-bg', background);
 
       console.log('Applied accessibility background attribute:', background);
     }
 
     // Update setting
-    updateSetting(setting, value) {
+    updateSetting(setting: string, value: string) {
       console.log('updateSetting called with:', setting, value);
       if (setting === 'colorBackground') {
         this.settings.colorBackground = value;
@@ -767,8 +776,8 @@ const brandColors = &#123;
     }
 
     // Get current setting
-    getSetting(setting) {
-      return this.settings[setting];
+    getSetting(setting: string) {
+      return this.settings[setting as keyof typeof this.settings];
     }
 
     // Reset all settings
@@ -791,9 +800,10 @@ const brandColors = &#123;
     // Remove active class from all buttons
     document.querySelectorAll('.test-btn').forEach(btn => btn.classList.remove('active'));
 
-    // Add active class to clicked button - use event.target if available
-    if (typeof event !== 'undefined' && event.target) {
-      event.target.classList.add('active');
+    // Add active class to the button that was clicked
+    const clickedButton = document.querySelector(`.test-btn[data-background="${background}"]`);
+    if (clickedButton) {
+      clickedButton.classList.add('active');
     }
 
     // Apply background using simple accessibility manager
@@ -805,6 +815,7 @@ const brandColors = &#123;
       const displayName = background === 'default' ? 'Default background' :
                          background.charAt(0).toUpperCase() + background.slice(1).replace('-', ' ') + ' background';
       statusEl.innerHTML = `<p><strong>Current:</strong> ${displayName}</p>`;
+      console.log('Status updated to:', displayName);
     } else {
       console.error('Accessibility manager not found');
       statusEl.innerHTML = `<p><strong>Error:</strong> Accessibility manager not loaded</p>`;
@@ -831,22 +842,10 @@ const brandColors = &#123;
     // Set up event listeners for background test buttons
     const testButtons = document.querySelectorAll('.test-btn[data-background]');
     console.log('Found test buttons:', testButtons.length);
+    console.log('Test buttons found:', testButtons);
 
-    testButtons.forEach(button => {
-      button.addEventListener('click', (event) => {
-        const background = button.getAttribute('data-background');
-        console.log('Button clicked, background:', background);
-
-        // Remove active class from all buttons
-        testButtons.forEach(btn => btn.classList.remove('active'));
-
-        // Add active class to clicked button
-        button.classList.add('active');
-
-        // Call the test function
-        window.testBackgroundColor(background);
-      });
-    });
+    // Note: Using onclick handlers directly on buttons instead of event listeners
+    // This ensures the buttons work even if the DOM is not fully loaded
 
     // Check if it loaded properly after a short delay
     setTimeout(() => {
