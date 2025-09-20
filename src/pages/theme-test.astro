@@ -475,6 +475,69 @@ const brandColors = &#123;
           </div>
         </section>
 
+        <!-- Links Testing Section -->
+        <section class="test-section">
+          <h2>Link Accessibility Testing</h2>
+
+          <div class="test-info">
+            <h3>Keyboard Navigation Test</h3>
+            <p>This section tests keyboard accessibility for various link types. All links should be reachable via Tab key and show clear focus indicators.</p>
+            <ul>
+              <li><strong>Tab through links:</strong> All links should be included in tab order</li>
+              <li><strong>Focus visibility:</strong> Clear visual indication of focused element</li>
+              <li><strong>Activation:</strong> Enter or Space should activate links</li>
+              <li><strong>Screen readers:</strong> Links should have descriptive labels</li>
+            </ul>
+          </div>
+
+          <div class="links-demo">
+            <h3>Various Link Types</h3>
+
+            <div class="link-group">
+              <h4>Standard Text Links</h4>
+              <p>Here are some inline links: <a href="#" class="link">Simple text link</a>, <a href="#about" class="link">Internal anchor link</a>, and <a href="https://example.com" class="link" target="_blank" rel="noopener">External link</a>.</p>
+            </div>
+
+            <div class="link-group">
+              <h4>Standalone Links</h4>
+              <ul class="link-list">
+                <li><a href="#" class="link">Home page link</a></li>
+                <li><a href="#services" class="link">Services section</a></li>
+                <li><a href="#contact" class="link">Contact page</a></li>
+                <li><a href="mailto:test@example.com" class="link">Email link</a></li>
+                <li><a href="tel:+1234567890" class="link">Phone link</a></li>
+              </ul>
+            </div>
+
+            <div class="link-group">
+              <h4>Button-Style Links</h4>
+              <div class="button-links">
+                <a href="#" class="link-button-style primary">Primary Action</a>
+                <a href="#" class="link-button-style secondary">Secondary Action</a>
+                <a href="#" class="link-button-style outline">Outline Action</a>
+              </div>
+            </div>
+
+            <div class="link-group">
+              <h4>Card-Style Links</h4>
+              <div class="card-links">
+                <a href="#" class="card-link">
+                  <h5>Card Title Link</h5>
+                  <p>This entire card should be clickable and keyboard accessible.</p>
+                </a>
+                <a href="#" class="card-link">
+                  <h5>Another Card</h5>
+                  <p>Tab navigation should work smoothly between these card links.</p>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="test-status" id="links-test-status">
+            <p><strong>Instructions:</strong> Use Tab key to navigate through all links above. Each should show clear focus indicators.</p>
+          </div>
+        </section>
+
       </div>
     </div>
   </div>
@@ -902,11 +965,13 @@ const brandColors = &#123;
   }
 
   .test-btn:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    background: var(--theme-surface-elevated);
-    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 74, 144, 226), 0.3);
-    transform: translateY(-1px);
+    outline: var(--accessibility-focus-border-width) solid var(--accessibility-focus-border-color);
+    outline-offset: var(--accessibility-focus-outline-offset);
+    background: var(--accessibility-focus-background);
+    color: var(--accessibility-focus-text-color);
+    transform: none;
+    border-color: var(--accessibility-focus-border-color);
+    box-shadow: none;
   }
 
   .test-btn:focus-visible {
@@ -946,45 +1011,161 @@ const brandColors = &#123;
   /* Fix accessibility for .link elements with higher specificity */
   a.link,
   a[href].link {
-    color: var(--color-primary) !important;
-    text-decoration: underline !important;
-    text-decoration-thickness: 1px !important;
-    text-underline-offset: 2px !important;
-    transition: all var(--transition-base) !important;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: all var(--transition-base);
   }
 
   a.link:hover,
   a[href].link:hover {
-    color: var(--color-primary-hover, color-mix(in srgb, var(--color-primary) 90%, black 10%)) !important;
-    text-decoration-thickness: 2px !important;
+    color: var(--color-primary-hover, color-mix(in srgb, var(--color-primary) 90%, black 10%));
+    text-decoration-thickness: 2px;
   }
 
   a.link:focus,
   a[href].link:focus {
-    outline: none !important;
-    color: var(--color-primary) !important;
-    background: rgba(74, 144, 226, 0.1) !important;
-    border-radius: 4px !important;
-    padding: 2px 4px !important;
-    margin: -2px -4px !important;
-    text-decoration: none !important;
-    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5) !important;
+    outline: var(--accessibility-focus-border-width) solid var(--accessibility-focus-border-color);
+    outline-offset: var(--accessibility-focus-outline-offset);
+    background: var(--accessibility-focus-background);
+    color: var(--accessibility-focus-link-color);
+    border-radius: 2px;
+    text-decoration: none;
   }
 
   a.link:focus-visible,
   a[href].link:focus-visible {
-    outline: 3px solid var(--color-primary) !important;
-    outline-offset: 2px !important;
+    outline: var(--accessibility-focus-border-width) solid var(--accessibility-focus-border-color);
+    outline-offset: var(--accessibility-focus-outline-offset);
   }
 
-  /* Universal link focus styles as fallback */
+  /* Universal link focus styles using accessibility tokens */
   a:focus {
-    outline: 2px solid #4890e2 !important;
-    outline-offset: 2px !important;
-    background: rgba(72, 144, 226, 0.1) !important;
-    border-radius: 3px !important;
-    padding: 1px 2px !important;
-    text-decoration: none !important;
+    outline: var(--accessibility-focus-border-width) solid var(--accessibility-focus-border-color);
+    outline-offset: var(--accessibility-focus-outline-offset);
+    background: var(--accessibility-focus-background);
+    color: var(--accessibility-focus-link-color);
+    border-radius: 2px;
+    text-decoration: none;
+  }
+
+  /* Links Testing Section Styles */
+  .links-demo {
+    margin-top: var(--space-2xl);
+  }
+
+  .link-group {
+    margin-bottom: var(--space-2xl);
+    padding: var(--space-lg);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-lg);
+    background: var(--theme-surface);
+  }
+
+  .link-group h4 {
+    margin-bottom: var(--space-md);
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+  }
+
+  .link-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .link-list li {
+    margin-bottom: var(--space-sm);
+  }
+
+  .button-links {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+  }
+
+  .link-button-style {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    transition: all var(--transition-base);
+    border: 2px solid transparent;
+  }
+
+  .link-button-style.primary {
+    background: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+
+  .link-button-style.secondary {
+    background: var(--color-secondary);
+    color: white;
+    border-color: var(--color-secondary);
+  }
+
+  .link-button-style.outline {
+    background: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .link-button-style:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .link-button-style:focus {
+    outline: var(--accessibility-focus-border-width) solid var(--accessibility-focus-border-color);
+    outline-offset: var(--accessibility-focus-outline-offset);
+    background: var(--accessibility-focus-background);
+    color: var(--accessibility-focus-text-color);
+    transform: none;
+  }
+
+  .card-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .card-link {
+    display: block;
+    padding: var(--space-lg);
+    border: 1px solid var(--theme-border);
+    border-radius: var(--radius-lg);
+    background: var(--theme-surface-elevated);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition-base);
+  }
+
+  .card-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-color: var(--color-primary);
+  }
+
+  .card-link:focus {
+    outline: var(--accessibility-focus-border-width) solid var(--accessibility-focus-border-color);
+    outline-offset: var(--accessibility-focus-outline-offset);
+    background: var(--accessibility-focus-background);
+    color: var(--accessibility-focus-link-color);
+    transform: none;
+  }
+
+  .card-link h5 {
+    margin: 0 0 var(--space-sm) 0;
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+  }
+
+  .card-link p {
+    margin: 0;
+    color: var(--theme-text-light);
+    font-size: var(--font-size-sm);
   }
 
   @media (max-width: 768px) {

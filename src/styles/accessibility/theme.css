@@ -81,6 +81,18 @@
   --accessibility-char-medium: 0.05em;
   --accessibility-char-large: 0.1em;
   --accessibility-char-xl: 0.15em;
+
+  /* ========================================
+     Focus Accessibility Tokens
+     ======================================== */
+
+  /* Focus indicator styles */
+  --accessibility-focus-border-width: 3px;
+  --accessibility-focus-border-color: #000000;
+  --accessibility-focus-background: #f0f0f0;
+  --accessibility-focus-text-color: #000000;
+  --accessibility-focus-link-color: #0066cc;
+  --accessibility-focus-outline-offset: 2px;
 }
 
 /* ========================================
