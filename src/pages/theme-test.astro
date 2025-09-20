@@ -229,24 +229,191 @@ const brandColors = &#123;
         </div>
       </section>
 
+      <!-- Background Testing Section -->
+      <section class="test-section">
+        <h2>Background Theme Testing</h2>
+
+        <div class="test-info">
+          <h3>Background Color Options</h3>
+          <p>Test different accessibility background themes. These are hardcoded in <code>styles/accessibility/theme.css</code> and separate from brand colors in <code>client.config.js</code>.</p>
+          <ul>
+            <li><strong>Beige:</strong> Uses brand background from client.config.js</li>
+            <li><strong>Cream:</strong> Warm cream background for comfort</li>
+            <li><strong>Light Gray:</strong> Clean light gray for softer contrast</li>
+            <li><strong>Light Pink:</strong> Gentle pink tone for warmth</li>
+            <li><strong>Light Blue:</strong> Calm blue tone for focus</li>
+            <li><strong>Black & White:</strong> High contrast for accessibility</li>
+          </ul>
+          <p><strong>Architecture:</strong> Brand colors (buttons, accents) remain unchanged while background/text colors switch for accessibility.</p>
+        </div>
+
+        <div class="test-controls">
+          <h3>Background Controls</h3>
+          <p>Click any button to instantly change the background theme:</p>
+          <div class="control-buttons">
+            <button class="test-btn active" data-background="default" onclick="testBackgroundColor('default')">Beige</button>
+            <button class="test-btn" data-background="cream" onclick="testBackgroundColor('cream')">Cream</button>
+            <button class="test-btn" data-background="light-gray" onclick="testBackgroundColor('light-gray')">Light Gray</button>
+            <button class="test-btn" data-background="light-pink" onclick="testBackgroundColor('light-pink')">Light Pink</button>
+            <button class="test-btn" data-background="light-blue" onclick="testBackgroundColor('light-blue')">Light Blue</button>
+            <button class="test-btn" data-background="black-white" onclick="testBackgroundColor('black-white')">Black & White</button>
+          </div>
+        </div>
+
+        <div class="test-status" id="accessibility-test-status">
+          <p><strong>Current:</strong> Beige background</p>
+        </div>
+      </section>
+
+      <!-- Line Spacing Testing Section -->
+      <section class="test-section">
+        <h2>Line Spacing Testing</h2>
+
+        <div class="test-info">
+          <h3>Line Spacing Options</h3>
+          <p>Adjust line spacing for better readability. These settings use relative units and apply globally.</p>
+          <ul>
+            <li><strong>Default:</strong> Uses typography system line heights</li>
+            <li><strong>Small:</strong> Slightly increased (1.4)</li>
+            <li><strong>Medium:</strong> Comfortable reading (1.6)</li>
+            <li><strong>Large:</strong> Relaxed spacing (1.8)</li>
+            <li><strong>XL:</strong> Extra loose for accessibility (2.2)</li>
+          </ul>
+        </div>
+
+        <div class="test-controls">
+          <h3>Line Spacing Controls</h3>
+          <p>Click any button to adjust line spacing:</p>
+          <div class="control-buttons">
+            <button class="test-btn active" data-line="default" onclick="testLineSpacing('default')">Default</button>
+            <button class="test-btn" data-line="small" onclick="testLineSpacing('small')">Small</button>
+            <button class="test-btn" data-line="medium" onclick="testLineSpacing('medium')">Medium</button>
+            <button class="test-btn" data-line="large" onclick="testLineSpacing('large')">Large</button>
+            <button class="test-btn" data-line="xl" onclick="testLineSpacing('xl')">XL</button>
+          </div>
+        </div>
+
+        <div class="test-status" id="line-test-status">
+          <p><strong>Current:</strong> Default line spacing</p>
+        </div>
+      </section>
+
+      <!-- Character Spacing Testing Section -->
+      <section class="test-section">
+        <h2>Character Spacing Testing</h2>
+
+        <div class="test-info">
+          <h3>Character Spacing Options</h3>
+          <p>Adjust letter spacing for better readability. Helpful for dyslexia and visual processing.</p>
+          <ul>
+            <li><strong>Default:</strong> Uses typography system letter spacing</li>
+            <li><strong>Small:</strong> Slight spacing (0.025em)</li>
+            <li><strong>Medium:</strong> Comfortable spacing (0.05em)</li>
+            <li><strong>Large:</strong> Increased spacing (0.1em)</li>
+            <li><strong>XL:</strong> Maximum spacing (0.15em)</li>
+          </ul>
+        </div>
+
+        <div class="test-controls">
+          <h3>Character Spacing Controls</h3>
+          <p>Click any button to adjust character spacing:</p>
+          <div class="control-buttons">
+            <button class="test-btn active" data-char="default" onclick="testCharSpacing('default')">Default</button>
+            <button class="test-btn" data-char="small" onclick="testCharSpacing('small')">Small</button>
+            <button class="test-btn" data-char="medium" onclick="testCharSpacing('medium')">Medium</button>
+            <button class="test-btn" data-char="large" onclick="testCharSpacing('large')">Large</button>
+            <button class="test-btn" data-char="xl" onclick="testCharSpacing('xl')">XL</button>
+          </div>
+        </div>
+
+        <div class="test-status" id="char-test-status">
+          <p><strong>Current:</strong> Default character spacing</p>
+        </div>
+      </section>
+
+      <!-- Font Theme Testing Section -->
+      <section class="test-section">
+        <h2>Font Theme Testing</h2>
+
+        <div class="test-info">
+          <h3>Font Theme Options</h3>
+          <p>Choose accessibility-focused fonts designed for improved readability and comprehension.</p>
+          <ul>
+            <li><strong>System:</strong> Uses clean system fonts (Inter, Helvetica, Arial)</li>
+            <li><strong>OpenDyslexic:</strong> Designed to increase reading proficiency for dyslexic readers</li>
+            <li><strong>Lexend:</strong> Research-backed font proven to improve reading comprehension</li>
+            <li><strong>Readable:</strong> High readability system font stack</li>
+          </ul>
+          <p><strong>Note:</strong> OpenDyslexic is loaded locally, Lexend from Google Fonts, others are system fonts.</p>
+        </div>
+
+        <div class="test-controls">
+          <h3>Font Controls</h3>
+          <p>Click any button to change the font theme:</p>
+          <div class="control-buttons">
+            <button class="test-btn active" data-font="default" onclick="testFontTheme('default')">Default Brand</button>
+            <button class="test-btn" data-font="system" onclick="testFontTheme('system')">System</button>
+            <button class="test-btn" data-font="dyslexic" onclick="testFontTheme('dyslexic')">OpenDyslexic</button>
+            <button class="test-btn" data-font="lexend" onclick="testFontTheme('lexend')">Lexend</button>
+            <button class="test-btn" data-font="readable" onclick="testFontTheme('readable')">Readable</button>
+          </div>
+        </div>
+
+        <div class="test-status" id="font-test-status">
+          <p><strong>Current:</strong> Default brand fonts</p>
+        </div>
+      </section>
+
+      <!-- Reset Controls Section -->
+      <section class="test-section">
+        <h2>Reset Accessibility Settings</h2>
+
+        <div class="test-info">
+          <h3>Reset All Settings</h3>
+          <p>Reset all accessibility settings back to the default brand theme.</p>
+          <ul>
+            <li><strong>Background:</strong> Back to beige theme</li>
+            <li><strong>Line Spacing:</strong> Back to typography system defaults</li>
+            <li><strong>Character Spacing:</strong> Back to typography system defaults</li>
+            <li><strong>Font Theme:</strong> Back to brand fonts from client.config.js</li>
+          </ul>
+        </div>
+
+        <div class="test-controls">
+          <h3>Reset Controls</h3>
+          <p>Click to restore all default settings:</p>
+          <div class="control-buttons">
+            <button class="test-btn reset-btn" onclick="resetAllAccessibility()">Reset All Settings</button>
+          </div>
+        </div>
+      </section>
+
       <!-- Theme Information -->
       <section class="test-section">
-        <h2>Theme System Info</h2>
+        <h2>Theme Architecture</h2>
         <div class="theme-info">
-          <h3>Light Mode (Default)</h3>
+          <h3>Brand Tokens (client.config.js)</h3>
           <ul>
-            <li>Colors defined in client.config.js</li>
-            <li>Light background with dark text</li>
-            <li>Primary color: #ba2f5d</li>
-            <li>Uses standard light theme surfaces</li>
+            <li><strong>Configurable:</strong> Primary, secondary, accent colors</li>
+            <li><strong>Typography:</strong> Font families for body, headers, code</li>
+            <li><strong>Brand text/background:</strong> Default theme colors</li>
+            <li><strong>SEO & Contact:</strong> Site metadata and contact info</li>
           </ul>
 
-          <h3>Dark Mode</h3>
+          <h3>Accessibility Tokens (styles/accessibility/theme.css)</h3>
           <ul>
-            <li>Colors from dark-theme-generator-colors.css</li>
-            <li>Dark surface backgrounds</li>
-            <li>Light text for proper contrast</li>
-            <li>Same primary colors with dark theme mapping</li>
+            <li><strong>Hardcoded:</strong> 7 predefined accessibility themes</li>
+            <li><strong>Separate from brand:</strong> Won't change when brand updates</li>
+            <li><strong>Background/text only:</strong> Brand colors remain consistent</li>
+            <li><strong>DOM override:</strong> data-accessibility-bg="theme-name"</li>
+          </ul>
+
+          <h3>Global CSS (styles/global.css)</h3>
+          <ul>
+            <li><strong>Combines:</strong> Brand tokens + accessibility tokens + system tokens</li>
+            <li><strong>Working variables:</strong> --color-* used throughout the site</li>
+            <li><strong>Theme aliases:</strong> --theme-* for backwards compatibility</li>
+            <li><strong>Import structure:</strong> base.css → accessibility/theme.css</li>
           </ul>
         </div>
       </section>
@@ -372,10 +539,15 @@ const brandColors = &#123;
 
   .instructions {
     padding: var(--space-lg);
-    background: var(--theme-surface-elevated);
+    background: var(--theme-surface);
     border-left: 4px solid var(--theme-primary);
     border-radius: var(--radius-md);
     margin-top: var(--space-lg);
+    transition: background var(--transition-base);
+  }
+
+  .instructions:hover {
+    background: var(--theme-surface-elevated);
   }
 
   .color-grid {
@@ -456,9 +628,14 @@ const brandColors = &#123;
   .typography-group {
     margin-bottom: var(--space-2xl);
     padding: var(--space-lg);
-    background: var(--theme-surface-elevated);
+    background: var(--theme-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--theme-border);
+    transition: background var(--transition-base);
+  }
+
+  .typography-group:hover {
+    background: var(--theme-surface-elevated);
   }
 
   .typography-group > h3 {
@@ -638,10 +815,15 @@ const brandColors = &#123;
 
   .test-info {
     padding: var(--space-lg);
-    background: var(--theme-surface-elevated);
+    background: var(--theme-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--theme-border);
     margin-bottom: var(--space-lg);
+    transition: background var(--transition-base);
+  }
+
+  .test-info:hover {
+    background: var(--theme-surface-elevated);
   }
 
   .test-info h3 {
@@ -671,10 +853,15 @@ const brandColors = &#123;
 
   .test-controls {
     padding: var(--space-lg);
-    background: var(--theme-surface-elevated);
+    background: var(--theme-surface);
     border-radius: var(--radius-lg);
     border: 1px solid var(--theme-border);
     margin-bottom: var(--space-lg);
+    transition: background var(--transition-base);
+  }
+
+  .test-controls:hover {
+    background: var(--theme-surface-elevated);
   }
 
   .test-controls h3 {
@@ -720,6 +907,19 @@ const brandColors = &#123;
     color: white;
   }
 
+  .test-btn.reset-btn {
+    background: var(--color-secondary);
+    border-color: var(--color-secondary);
+    color: white;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .test-btn.reset-btn:hover {
+    background: var(--color-accent3);
+    border-color: var(--color-accent3);
+    color: white;
+  }
+
   @media (max-width: 768px) {
     .control-buttons {
       justify-content: center;
@@ -734,6 +934,9 @@ const brandColors = &#123;
     interface Window {
       simpleAccessibilityManager: SimpleAccessibilityManager;
       testBackgroundColor: (background: string) => void;
+      testLineSpacing: (spacing: string) => void;
+      testCharSpacing: (spacing: string) => void;
+      resetAllAccessibility: () => void;
     }
   }
 
@@ -741,11 +944,17 @@ const brandColors = &#123;
   class SimpleAccessibilityManager {
     settings: {
       colorBackground: string;
+      lineSpacing: string;
+      charSpacing: string;
+      fontTheme: string;
     };
 
     constructor() {
       this.settings = {
-        colorBackground: 'default'
+        colorBackground: 'default',
+        lineSpacing: 'default',
+        charSpacing: 'default',
+        fontTheme: 'default'
       };
       this.init();
     }
@@ -766,12 +975,72 @@ const brandColors = &#123;
       console.log('Applied accessibility background attribute:', background);
     }
 
+    // Apply line spacing setting
+    applyLineSpacing(spacing: string) {
+      const html = document.documentElement;
+
+      console.log('Applying line spacing:', spacing);
+
+      // Remove existing line spacing attributes
+      html.removeAttribute('data-accessibility-line');
+
+      // Set new line spacing if not default
+      if (spacing !== 'default') {
+        html.setAttribute('data-accessibility-line', spacing);
+      }
+
+      console.log('Applied line spacing attribute:', spacing);
+    }
+
+    // Apply character spacing setting
+    applyCharSpacing(spacing: string) {
+      const html = document.documentElement;
+
+      console.log('Applying character spacing:', spacing);
+
+      // Remove existing char spacing attributes
+      html.removeAttribute('data-accessibility-char');
+
+      // Set new char spacing if not default
+      if (spacing !== 'default') {
+        html.setAttribute('data-accessibility-char', spacing);
+      }
+
+      console.log('Applied character spacing attribute:', spacing);
+    }
+
+    // Apply font theme setting
+    applyFontTheme(theme: string) {
+      const html = document.documentElement;
+
+      console.log('Applying font theme:', theme);
+
+      // Remove existing font theme attributes
+      html.removeAttribute('data-accessibility-font');
+
+      // Set new font theme if not default
+      if (theme !== 'default') {
+        html.setAttribute('data-accessibility-font', theme);
+      }
+
+      console.log('Applied font theme attribute:', theme);
+    }
+
     // Update setting
     updateSetting(setting: string, value: string) {
       console.log('updateSetting called with:', setting, value);
       if (setting === 'colorBackground') {
         this.settings.colorBackground = value;
         this.applyBackground(value);
+      } else if (setting === 'lineSpacing') {
+        this.settings.lineSpacing = value;
+        this.applyLineSpacing(value);
+      } else if (setting === 'charSpacing') {
+        this.settings.charSpacing = value;
+        this.applyCharSpacing(value);
+      } else if (setting === 'fontTheme') {
+        this.settings.fontTheme = value;
+        this.applyFontTheme(value);
       }
     }
 
@@ -783,7 +1052,16 @@ const brandColors = &#123;
     // Reset all settings
     resetSettings() {
       this.settings.colorBackground = 'default';
+      this.settings.lineSpacing = 'default';
+      this.settings.charSpacing = 'default';
+      this.settings.fontTheme = 'default';
+
       this.applyBackground('default');
+      this.applyLineSpacing('default');
+      this.applyCharSpacing('default');
+      this.applyFontTheme('default');
+
+      console.log('All accessibility settings reset to default');
     }
   }
 
@@ -812,13 +1090,176 @@ const brandColors = &#123;
       window.simpleAccessibilityManager.updateSetting('colorBackground', background);
 
       // Update status
-      const displayName = background === 'default' ? 'Default background' :
-                         background.charAt(0).toUpperCase() + background.slice(1).replace('-', ' ') + ' background';
+      const displayNames = {
+        'default': 'Beige background',
+        'cream': 'Cream background',
+        'light-gray': 'Light Gray background',
+        'light-pink': 'Light Pink background',
+        'light-blue': 'Light Blue background',
+        'black-white': 'Black & White background'
+      };
+      const displayName = displayNames[background] || background + ' background';
       statusEl.innerHTML = `<p><strong>Current:</strong> ${displayName}</p>`;
       console.log('Status updated to:', displayName);
     } else {
       console.error('Accessibility manager not found');
       statusEl.innerHTML = `<p><strong>Error:</strong> Accessibility manager not loaded</p>`;
+    }
+  };
+
+  // Make testLineSpacing a global function
+  window.testLineSpacing = function(spacing) {
+    console.log('testLineSpacing called with:', spacing);
+    const statusEl = document.getElementById('line-test-status');
+
+    if (!statusEl) {
+      console.error('Line spacing status element not found');
+      return;
+    }
+
+    // Remove active class from all line spacing buttons
+    document.querySelectorAll('.test-btn[data-line]').forEach(btn => btn.classList.remove('active'));
+
+    // Add active class to the button that was clicked
+    const clickedButton = document.querySelector(`.test-btn[data-line="${spacing}"]`);
+    if (clickedButton) {
+      clickedButton.classList.add('active');
+    }
+
+    // Apply line spacing using accessibility manager
+    if (window.simpleAccessibilityManager) {
+      window.simpleAccessibilityManager.updateSetting('lineSpacing', spacing);
+
+      // Update status
+      const displayNames = {
+        'default': 'Default line spacing',
+        'small': 'Small line spacing (1.4)',
+        'medium': 'Medium line spacing (1.6)',
+        'large': 'Large line spacing (1.8)',
+        'xl': 'XL line spacing (2.2)'
+      };
+      const displayName = displayNames[spacing] || spacing + ' line spacing';
+      statusEl.innerHTML = `<p><strong>Current:</strong> ${displayName}</p>`;
+    } else {
+      console.error('Accessibility manager not found');
+      statusEl.innerHTML = `<p><strong>Error:</strong> Accessibility manager not loaded</p>`;
+    }
+  };
+
+  // Make testCharSpacing a global function
+  window.testCharSpacing = function(spacing) {
+    console.log('testCharSpacing called with:', spacing);
+    const statusEl = document.getElementById('char-test-status');
+
+    if (!statusEl) {
+      console.error('Character spacing status element not found');
+      return;
+    }
+
+    // Remove active class from all char spacing buttons
+    document.querySelectorAll('.test-btn[data-char]').forEach(btn => btn.classList.remove('active'));
+
+    // Add active class to the button that was clicked
+    const clickedButton = document.querySelector(`.test-btn[data-char="${spacing}"]`);
+    if (clickedButton) {
+      clickedButton.classList.add('active');
+    }
+
+    // Apply character spacing using accessibility manager
+    if (window.simpleAccessibilityManager) {
+      window.simpleAccessibilityManager.updateSetting('charSpacing', spacing);
+
+      // Update status
+      const displayNames = {
+        'default': 'Default character spacing',
+        'small': 'Small character spacing (0.025em)',
+        'medium': 'Medium character spacing (0.05em)',
+        'large': 'Large character spacing (0.1em)',
+        'xl': 'XL character spacing (0.15em)'
+      };
+      const displayName = displayNames[spacing] || spacing + ' character spacing';
+      statusEl.innerHTML = `<p><strong>Current:</strong> ${displayName}</p>`;
+    } else {
+      console.error('Accessibility manager not found');
+      statusEl.innerHTML = `<p><strong>Error:</strong> Accessibility manager not loaded</p>`;
+    }
+  };
+
+  // Make testFontTheme a global function
+  window.testFontTheme = function(theme) {
+    console.log('testFontTheme called with:', theme);
+    const statusEl = document.getElementById('font-test-status');
+
+    if (!statusEl) {
+      console.error('Font theme status element not found');
+      return;
+    }
+
+    // Remove active class from all font theme buttons
+    document.querySelectorAll('.test-btn[data-font]').forEach(btn => btn.classList.remove('active'));
+
+    // Add active class to the button that was clicked
+    const clickedButton = document.querySelector(`.test-btn[data-font="${theme}"]`);
+    if (clickedButton) {
+      clickedButton.classList.add('active');
+    }
+
+    // Apply font theme using accessibility manager
+    if (window.simpleAccessibilityManager) {
+      window.simpleAccessibilityManager.updateSetting('fontTheme', theme);
+
+      // Update status
+      const displayNames = {
+        'default': 'Default brand fonts',
+        'system': 'System fonts (Inter, Helvetica, Arial)',
+        'dyslexic': 'OpenDyslexic font',
+        'lexend': 'Lexend font',
+        'readable': 'Readable system fonts'
+      };
+      const displayName = displayNames[theme] || theme + ' font theme';
+      statusEl.innerHTML = `<p><strong>Current:</strong> ${displayName}</p>`;
+    } else {
+      console.error('Accessibility manager not found');
+      statusEl.innerHTML = `<p><strong>Error:</strong> Accessibility manager not loaded</p>`;
+    }
+  };
+
+  // Make resetAllAccessibility a global function
+  window.resetAllAccessibility = function() {
+    console.log('resetAllAccessibility called');
+
+    if (window.simpleAccessibilityManager) {
+      // Reset all settings
+      window.simpleAccessibilityManager.resetSettings();
+
+      // Reset all button states
+      document.querySelectorAll('.test-btn').forEach(btn => btn.classList.remove('active'));
+
+      // Set default buttons as active
+      const defaultBgBtn = document.querySelector('.test-btn[data-background="default"]');
+      const defaultLineBtn = document.querySelector('.test-btn[data-line="default"]');
+      const defaultCharBtn = document.querySelector('.test-btn[data-char="default"]');
+      const defaultFontBtn = document.querySelector('.test-btn[data-font="default"]');
+
+      if (defaultBgBtn) defaultBgBtn.classList.add('active');
+      if (defaultLineBtn) defaultLineBtn.classList.add('active');
+      if (defaultCharBtn) defaultCharBtn.classList.add('active');
+      if (defaultFontBtn) defaultFontBtn.classList.add('active');
+
+      // Update all status displays
+      const bgStatus = document.getElementById('accessibility-test-status');
+      const lineStatus = document.getElementById('line-test-status');
+      const charStatus = document.getElementById('char-test-status');
+      const fontStatus = document.getElementById('font-test-status');
+
+      if (bgStatus) bgStatus.innerHTML = `<p><strong>Current:</strong> Beige background</p>`;
+      if (lineStatus) lineStatus.innerHTML = `<p><strong>Current:</strong> Default line spacing</p>`;
+      if (charStatus) charStatus.innerHTML = `<p><strong>Current:</strong> Default character spacing</p>`;
+      if (fontStatus) fontStatus.innerHTML = `<p><strong>Current:</strong> Default brand fonts</p>`;
+
+      console.log('All accessibility settings reset and UI updated');
+    } else {
+      console.error('Accessibility manager not found');
     }
   };
 

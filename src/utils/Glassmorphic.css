@@ -1,0 +1,96 @@
+/* ========================================
+   Glassmorphic Design Tokens
+   ======================================== */
+
+:root {
+  /* Glassmorphic Card Tokens */
+  --glass-card-bg: rgba(255, 255, 255, 0.25);
+  --glass-card-border: rgba(255, 255, 255, 0.3);
+  --glass-card-blur: 33px;
+  --glass-card-radius: 20px;
+  --glass-card-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 22px 11px rgba(255, 255, 255, 1.1);
+
+  /* Glassmorphic Surface Tokens (Light) */
+  --glass-surface-bg: rgba(255, 252, 246, 0.42);
+  --glass-surface-border: rgba(255, 252, 246, 0.3);
+  --glass-surface-blur: 9.4px;
+  --glass-surface-radius: 16px;
+  --glass-surface-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  /* Glassmorphic Edge Highlights */
+  --glass-highlight-top: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  --glass-highlight-left: linear-gradient(180deg, rgba(255, 255, 255, 0.8), transparent, rgba(255, 255, 255, 0.3));
+}
+
+/* ========================================
+   Glassmorphic Components
+   ======================================== */
+
+/* Full Glass Card Component */
+.glass-card {
+  width: 240px;
+  height: 360px;
+  background: var(--glass-card-bg);
+  backdrop-filter: blur(var(--glass-card-blur));
+  -webkit-backdrop-filter: blur(var(--glass-card-blur));
+  border-radius: var(--glass-card-radius);
+  border: 1px solid var(--glass-card-border);
+  box-shadow: var(--glass-card-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--glass-highlight-top);
+}
+
+.glass-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 100%;
+  background: var(--glass-highlight-left);
+}
+
+/* Light Glass Surface (for headers, panels, etc.) */
+.glass-surface {
+  background: var(--glass-surface-bg);
+  border-radius: var(--glass-surface-radius);
+  box-shadow: var(--glass-surface-shadow);
+  backdrop-filter: blur(var(--glass-surface-blur));
+  -webkit-backdrop-filter: blur(var(--glass-surface-blur));
+  border: 1px solid var(--glass-surface-border);
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+/* Apply glassmorphic background only */
+.glass-bg {
+  background: var(--glass-surface-bg);
+  backdrop-filter: blur(var(--glass-surface-blur));
+  -webkit-backdrop-filter: blur(var(--glass-surface-blur));
+}
+
+/* Apply glassmorphic border only */
+.glass-border {
+  border: 1px solid var(--glass-surface-border);
+}
+
+/* Apply glassmorphic shadow only */
+.glass-shadow {
+  box-shadow: var(--glass-surface-shadow);
+}

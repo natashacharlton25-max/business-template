@@ -1,5 +1,7 @@
 /* Base CSS - Fixed system variables that rarely change */
 
+@import './accessibility/theme.css';
+
 :root {
   /* Layout & Spacing - Fixed values */
   --max-width: 1400px;
@@ -90,6 +92,38 @@
   --color-white: #ffffff;
   --color-black: #000000;
   --color-transparent: transparent;
+
+  /* ========================================
+     Working Theme Variables
+     ========================================
+
+     These reference brand tokens (from Layout.astro) or get overridden
+     by accessibility themes. NO hardcoded values here.
+  */
+
+  /* Default theme colors (can be overridden by accessibility themes) */
+  --color-background: var(--brand-background);
+  --color-text: var(--brand-text);
+  --color-text-light: var(--brand-text-light);
+  --color-text-muted: var(--brand-text-muted);
+  --color-surface: var(--brand-background);
+  --color-surface-elevated: var(--brand-background);
+  --color-border: var(--brand-text-light);
+
+  /* Brand colors (always use brand tokens, never overridden by accessibility) */
+  --color-primary: var(--brand-primary);
+  --color-secondary: var(--brand-secondary);
+  --color-accent1: var(--brand-accent1);
+  --color-accent2: var(--brand-accent2);
+  --color-accent3: var(--brand-accent3);
+
+  /* Theme Aliases (for backwards compatibility) */
+  --theme-surface: var(--color-surface);
+  --theme-surface-elevated: var(--color-surface-elevated);
+  --theme-border: var(--color-border);
+  --theme-text: var(--color-text);
+  --theme-text-light: var(--color-text-light);
+  --theme-primary: var(--color-primary);
 }
 
 /* Base Reset - Fixed styles */
@@ -216,3 +250,55 @@ main {
     transition: background-color 0.3s ease;
   }
 }
+
+/* ========================================
+   Typography using Brand Fonts
+   ========================================
+
+   Font family tokens are set by Layout.astro from client.config.js
+   No hardcoded values here - only token references
+*/
+
+/* Apply fonts to body */
+body {
+  font-family: var(--font-body);
+}
+
+/* Apply fonts to headings */
+h1, h2, h3, h4, h5, h6,
+.display-1, .display-1-caps, .display-1-thin,
+.display-2, .display-2-caps, .display-2-thin,
+.h1-caps, .h1-thin,
+.h2-caps, .h2-thin,
+.h3-caps, .h3-thin {
+  font-family: var(--font-header);
+}
+
+/* Apply fonts to code elements */
+code, pre,
+.code-inline, .code-block {
+  font-family: var(--font-mono);
+}
+
+/* ========================================
+   Brand Text Colors
+   ========================================
+
+   These utility classes always use brand colors
+   regardless of accessibility theme.
+   Brand tokens are set by Layout.astro from client.config.js
+*/
+
+.text-brand { color: var(--brand-primary); }
+.text-brand-secondary { color: var(--brand-secondary); }
+.text-brand-accent1 { color: var(--brand-accent1); }
+.text-brand-accent2 { color: var(--brand-accent2); }
+.text-brand-accent3 { color: var(--brand-accent3); }
+
+/* Background utility classes for brand colors */
+.bg-primary { background-color: var(--brand-primary); }
+.bg-secondary { background-color: var(--brand-secondary); }
+.bg-accent1 { background-color: var(--brand-accent1); }
+.bg-accent2 { background-color: var(--brand-accent2); }
+.bg-accent3 { background-color: var(--brand-accent3); }
+

@@ -1,0 +1,184 @@
+/* ========================================
+   Accessibility Font Definitions
+   ========================================
+
+   Font definitions for accessibility-focused typefaces:
+   - OpenDyslexic: Designed to increase reading proficiency for dyslexic readers
+   - Lexend: Research-backed font proven to improve reading comprehension
+*/
+
+/* ========================================
+   OpenDyslexic Font Face Definitions
+   ======================================== */
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/opendyslexic/OpenDyslexic-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/opendyslexic/OpenDyslexic-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/opendyslexic/OpenDyslexic-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/opendyslexic/OpenDyslexic-Bold-Italic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ========================================
+   Accessibility Font Tokens
+   ======================================== */
+
+:root {
+  /* Default System Font Stack */
+  --accessibility-font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /* Dyslexia-Friendly Font */
+  --accessibility-font-dyslexic: 'OpenDyslexic', var(--accessibility-font-system);
+
+  /* Reading Comprehension Font (Lexend - loaded from Google Fonts) */
+  --accessibility-font-lexend: 'Lexend', var(--accessibility-font-system);
+
+  /* High Readability System Font */
+  --accessibility-font-readable: 'Inter', 'Helvetica Neue', Arial, var(--accessibility-font-system);
+}
+
+/* ========================================
+   Font Theme Overrides
+   ======================================== */
+
+/* System Font Theme */
+html[data-accessibility-font="system"] {
+  --font-body: var(--accessibility-font-system);
+  --font-header: var(--accessibility-font-system);
+}
+
+html[data-accessibility-font="system"] body,
+html[data-accessibility-font="system"] body *,
+html[data-accessibility-font="system"] h1,
+html[data-accessibility-font="system"] h2,
+html[data-accessibility-font="system"] h3,
+html[data-accessibility-font="system"] h4,
+html[data-accessibility-font="system"] h5,
+html[data-accessibility-font="system"] h6,
+html[data-accessibility-font="system"] p,
+html[data-accessibility-font="system"] div,
+html[data-accessibility-font="system"] span,
+html[data-accessibility-font="system"] li {
+  font-family: var(--accessibility-font-system) !important;
+}
+
+/* OpenDyslexic Font Theme */
+html[data-accessibility-font="dyslexic"] {
+  --font-body: var(--accessibility-font-dyslexic);
+  --font-header: var(--accessibility-font-dyslexic);
+}
+
+html[data-accessibility-font="dyslexic"] body,
+html[data-accessibility-font="dyslexic"] body *,
+html[data-accessibility-font="dyslexic"] h1,
+html[data-accessibility-font="dyslexic"] h2,
+html[data-accessibility-font="dyslexic"] h3,
+html[data-accessibility-font="dyslexic"] h4,
+html[data-accessibility-font="dyslexic"] h5,
+html[data-accessibility-font="dyslexic"] h6,
+html[data-accessibility-font="dyslexic"] p,
+html[data-accessibility-font="dyslexic"] div,
+html[data-accessibility-font="dyslexic"] span,
+html[data-accessibility-font="dyslexic"] li {
+  font-family: var(--accessibility-font-dyslexic) !important;
+}
+
+/* Lexend Font Theme */
+html[data-accessibility-font="lexend"] {
+  --font-body: var(--accessibility-font-lexend);
+  --font-header: var(--accessibility-font-lexend);
+}
+
+html[data-accessibility-font="lexend"] body,
+html[data-accessibility-font="lexend"] body *,
+html[data-accessibility-font="lexend"] h1,
+html[data-accessibility-font="lexend"] h2,
+html[data-accessibility-font="lexend"] h3,
+html[data-accessibility-font="lexend"] h4,
+html[data-accessibility-font="lexend"] h5,
+html[data-accessibility-font="lexend"] h6,
+html[data-accessibility-font="lexend"] p,
+html[data-accessibility-font="lexend"] div,
+html[data-accessibility-font="lexend"] span,
+html[data-accessibility-font="lexend"] li {
+  font-family: var(--accessibility-font-lexend) !important;
+}
+
+/* High Readability Font Theme */
+html[data-accessibility-font="readable"] {
+  --font-body: var(--accessibility-font-readable);
+  --font-header: var(--accessibility-font-readable);
+}
+
+html[data-accessibility-font="readable"] body,
+html[data-accessibility-font="readable"] body *,
+html[data-accessibility-font="readable"] h1,
+html[data-accessibility-font="readable"] h2,
+html[data-accessibility-font="readable"] h3,
+html[data-accessibility-font="readable"] h4,
+html[data-accessibility-font="readable"] h5,
+html[data-accessibility-font="readable"] h6,
+html[data-accessibility-font="readable"] p,
+html[data-accessibility-font="readable"] div,
+html[data-accessibility-font="readable"] span,
+html[data-accessibility-font="readable"] li {
+  font-family: var(--accessibility-font-readable) !important;
+}
+
+/* ========================================
+   Font Accessibility Enhancements
+   ======================================== */
+
+/* Enhanced letter spacing for dyslexic fonts */
+html[data-accessibility-font="dyslexic"] body *,
+html[data-accessibility-font="dyslexic"] h1,
+html[data-accessibility-font="dyslexic"] h2,
+html[data-accessibility-font="dyslexic"] h3,
+html[data-accessibility-font="dyslexic"] h4,
+html[data-accessibility-font="dyslexic"] h5,
+html[data-accessibility-font="dyslexic"] h6,
+html[data-accessibility-font="dyslexic"] p,
+html[data-accessibility-font="dyslexic"] div,
+html[data-accessibility-font="dyslexic"] span,
+html[data-accessibility-font="dyslexic"] li {
+  letter-spacing: 0.025em;
+}
+
+/* Slightly enhanced line height for Lexend */
+html[data-accessibility-font="lexend"] body *,
+html[data-accessibility-font="lexend"] h1,
+html[data-accessibility-font="lexend"] h2,
+html[data-accessibility-font="lexend"] h3,
+html[data-accessibility-font="lexend"] h4,
+html[data-accessibility-font="lexend"] h5,
+html[data-accessibility-font="lexend"] h6,
+html[data-accessibility-font="lexend"] p,
+html[data-accessibility-font="lexend"] div,
+html[data-accessibility-font="lexend"] span,
+html[data-accessibility-font="lexend"] li {
+  line-height: 1.6;
+}

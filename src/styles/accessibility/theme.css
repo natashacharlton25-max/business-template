@@ -1,0 +1,274 @@
+/* ========================================
+   Accessibility Theme Tokens
+   ========================================
+
+   Hardcoded accessibility color tokens that are separate from
+   brand colors in client.config.js. These provide alternative
+   color schemes for accessibility needs.
+*/
+
+:root {
+  /* Default Accessibility Theme (Light) - matches client.config.js background */
+  --accessibility-bg-default: #f6f2ea;
+  --accessibility-text-default: #333333;
+  --accessibility-text-light-default: #666666;
+  --accessibility-text-muted-default: #999999;
+  --accessibility-surface-default: #f6f2ea;
+  --accessibility-surface-elevated-default: #ffffff;
+  --accessibility-border-default: #e5e5e5;
+
+  /* Cream Accessibility Theme */
+  --accessibility-bg-cream: #faf6f0;
+  --accessibility-text-cream: #2d2420;
+  --accessibility-text-light-cream: #5a4e44;
+  --accessibility-text-muted-cream: #8a7d73;
+  --accessibility-surface-cream: #faf6f0;
+  --accessibility-surface-elevated-cream: #ffffff;
+  --accessibility-border-cream: #e8ddd3;
+
+  /* Light Gray Accessibility Theme */
+  --accessibility-bg-light-gray: #f8f8f8;
+  --accessibility-text-light-gray: #1a1a1a;
+  --accessibility-text-light-light-gray: #404040;
+  --accessibility-text-muted-light-gray: #707070;
+  --accessibility-surface-light-gray: #f8f8f8;
+  --accessibility-surface-elevated-light-gray: #ffffff;
+  --accessibility-border-light-gray: #e0e0e0;
+
+  /* Light Pink Accessibility Theme */
+  --accessibility-bg-light-pink: #fef7f7;
+  --accessibility-text-light-pink: #2d1a1a;
+  --accessibility-text-light-light-pink: #5a3030;
+  --accessibility-text-muted-light-pink: #8a5f5f;
+  --accessibility-surface-light-pink: #fef7f7;
+  --accessibility-surface-elevated-light-pink: #ffffff;
+  --accessibility-border-light-pink: #f0d9d9;
+
+  /* Light Blue Accessibility Theme */
+  --accessibility-bg-light-blue: #f7f9fc;
+  --accessibility-text-light-blue: #1a252d;
+  --accessibility-text-light-light-blue: #304a5a;
+  --accessibility-text-muted-light-blue: #5f798a;
+  --accessibility-surface-light-blue: #f7f9fc;
+  --accessibility-surface-elevated-light-blue: #ffffff;
+  --accessibility-border-light-blue: #d9e6f0;
+
+  /* Black and White Accessibility Theme (High Contrast) */
+  --accessibility-bg-black-white: #ffffff;
+  --accessibility-text-black-white: #000000;
+  --accessibility-text-light-black-white: #000000;
+  --accessibility-text-muted-black-white: #000000;
+  --accessibility-surface-black-white: #ffffff;
+  --accessibility-surface-elevated-black-white: #f0f0f0;
+  --accessibility-border-black-white: #000000;
+
+  /* ========================================
+     Line Spacing Accessibility Tokens
+     ======================================== */
+
+  /* Line spacing options */
+  --accessibility-line-small: 1.4;
+  --accessibility-line-medium: 1.6;
+  --accessibility-line-large: 1.8;
+  --accessibility-line-xl: 2.2;
+
+  /* ========================================
+     Character Spacing Accessibility Tokens
+     ======================================== */
+
+  /* Character spacing options */
+  --accessibility-char-small: 0.025em;
+  --accessibility-char-medium: 0.05em;
+  --accessibility-char-large: 0.1em;
+  --accessibility-char-xl: 0.15em;
+}
+
+/* ========================================
+   Accessibility Theme Overrides
+   ======================================== */
+
+/* Default Theme */
+html[data-accessibility-bg="default"] {
+  --color-background: var(--accessibility-bg-default);
+  --color-text: var(--accessibility-text-default);
+  --color-text-light: var(--accessibility-text-light-default);
+  --color-text-muted: var(--accessibility-text-muted-default);
+  --color-surface: var(--accessibility-surface-default);
+  --color-surface-elevated: var(--accessibility-surface-elevated-default);
+  --color-border: var(--accessibility-border-default);
+}
+
+/* Cream Background Theme */
+html[data-accessibility-bg="cream"] {
+  --color-background: var(--accessibility-bg-cream);
+  --color-text: var(--accessibility-text-cream);
+  --color-text-light: var(--accessibility-text-light-cream);
+  --color-text-muted: var(--accessibility-text-muted-cream);
+  --color-surface: var(--accessibility-surface-cream);
+  --color-surface-elevated: var(--accessibility-surface-elevated-cream);
+  --color-border: var(--accessibility-border-cream);
+}
+
+/* Light Gray Background Theme */
+html[data-accessibility-bg="light-gray"] {
+  --color-background: var(--accessibility-bg-light-gray);
+  --color-text: var(--accessibility-text-light-gray);
+  --color-text-light: var(--accessibility-text-light-light-gray);
+  --color-text-muted: var(--accessibility-text-muted-light-gray);
+  --color-surface: var(--accessibility-surface-light-gray);
+  --color-surface-elevated: var(--accessibility-surface-elevated-light-gray);
+  --color-border: var(--accessibility-border-light-gray);
+}
+
+/* Light Pink Background Theme */
+html[data-accessibility-bg="light-pink"] {
+  --color-background: var(--accessibility-bg-light-pink);
+  --color-text: var(--accessibility-text-light-pink);
+  --color-text-light: var(--accessibility-text-light-light-pink);
+  --color-text-muted: var(--accessibility-text-muted-light-pink);
+  --color-surface: var(--accessibility-surface-light-pink);
+  --color-surface-elevated: var(--accessibility-surface-elevated-light-pink);
+  --color-border: var(--accessibility-border-light-pink);
+}
+
+/* Light Blue Background Theme */
+html[data-accessibility-bg="light-blue"] {
+  --color-background: var(--accessibility-bg-light-blue);
+  --color-text: var(--accessibility-text-light-blue);
+  --color-text-light: var(--accessibility-text-light-light-blue);
+  --color-text-muted: var(--accessibility-text-muted-light-blue);
+  --color-surface: var(--accessibility-surface-light-blue);
+  --color-surface-elevated: var(--accessibility-surface-elevated-light-blue);
+  --color-border: var(--accessibility-border-light-blue);
+}
+
+/* Black and White Background Theme (High Contrast) */
+html[data-accessibility-bg="black-white"] {
+  --color-background: var(--accessibility-bg-black-white);
+  --color-text: var(--accessibility-text-black-white);
+  --color-text-light: var(--accessibility-text-light-black-white);
+  --color-text-muted: var(--accessibility-text-muted-black-white);
+  --color-surface: var(--accessibility-surface-black-white);
+  --color-surface-elevated: var(--accessibility-surface-elevated-black-white);
+  --color-border: var(--accessibility-border-black-white);
+}
+
+/* ========================================
+   Line Spacing Accessibility Overrides
+   ======================================== */
+
+html[data-accessibility-line="small"] body *,
+html[data-accessibility-line="small"] h1,
+html[data-accessibility-line="small"] h2,
+html[data-accessibility-line="small"] h3,
+html[data-accessibility-line="small"] h4,
+html[data-accessibility-line="small"] h5,
+html[data-accessibility-line="small"] h6,
+html[data-accessibility-line="small"] p,
+html[data-accessibility-line="small"] div,
+html[data-accessibility-line="small"] span,
+html[data-accessibility-line="small"] li {
+  line-height: var(--accessibility-line-small);
+}
+
+html[data-accessibility-line="medium"] body *,
+html[data-accessibility-line="medium"] h1,
+html[data-accessibility-line="medium"] h2,
+html[data-accessibility-line="medium"] h3,
+html[data-accessibility-line="medium"] h4,
+html[data-accessibility-line="medium"] h5,
+html[data-accessibility-line="medium"] h6,
+html[data-accessibility-line="medium"] p,
+html[data-accessibility-line="medium"] div,
+html[data-accessibility-line="medium"] span,
+html[data-accessibility-line="medium"] li {
+  line-height: var(--accessibility-line-medium);
+}
+
+html[data-accessibility-line="large"] body *,
+html[data-accessibility-line="large"] h1,
+html[data-accessibility-line="large"] h2,
+html[data-accessibility-line="large"] h3,
+html[data-accessibility-line="large"] h4,
+html[data-accessibility-line="large"] h5,
+html[data-accessibility-line="large"] h6,
+html[data-accessibility-line="large"] p,
+html[data-accessibility-line="large"] div,
+html[data-accessibility-line="large"] span,
+html[data-accessibility-line="large"] li {
+  line-height: var(--accessibility-line-large);
+}
+
+html[data-accessibility-line="xl"] body *,
+html[data-accessibility-line="xl"] h1,
+html[data-accessibility-line="xl"] h2,
+html[data-accessibility-line="xl"] h3,
+html[data-accessibility-line="xl"] h4,
+html[data-accessibility-line="xl"] h5,
+html[data-accessibility-line="xl"] h6,
+html[data-accessibility-line="xl"] p,
+html[data-accessibility-line="xl"] div,
+html[data-accessibility-line="xl"] span,
+html[data-accessibility-line="xl"] li {
+  line-height: var(--accessibility-line-xl);
+}
+
+/* ========================================
+   Character Spacing Accessibility Overrides
+   ======================================== */
+
+html[data-accessibility-char="small"] body *,
+html[data-accessibility-char="small"] h1,
+html[data-accessibility-char="small"] h2,
+html[data-accessibility-char="small"] h3,
+html[data-accessibility-char="small"] h4,
+html[data-accessibility-char="small"] h5,
+html[data-accessibility-char="small"] h6,
+html[data-accessibility-char="small"] p,
+html[data-accessibility-char="small"] div,
+html[data-accessibility-char="small"] span,
+html[data-accessibility-char="small"] li {
+  letter-spacing: var(--accessibility-char-small);
+}
+
+html[data-accessibility-char="medium"] body *,
+html[data-accessibility-char="medium"] h1,
+html[data-accessibility-char="medium"] h2,
+html[data-accessibility-char="medium"] h3,
+html[data-accessibility-char="medium"] h4,
+html[data-accessibility-char="medium"] h5,
+html[data-accessibility-char="medium"] h6,
+html[data-accessibility-char="medium"] p,
+html[data-accessibility-char="medium"] div,
+html[data-accessibility-char="medium"] span,
+html[data-accessibility-char="medium"] li {
+  letter-spacing: var(--accessibility-char-medium);
+}
+
+html[data-accessibility-char="large"] body *,
+html[data-accessibility-char="large"] h1,
+html[data-accessibility-char="large"] h2,
+html[data-accessibility-char="large"] h3,
+html[data-accessibility-char="large"] h4,
+html[data-accessibility-char="large"] h5,
+html[data-accessibility-char="large"] h6,
+html[data-accessibility-char="large"] p,
+html[data-accessibility-char="large"] div,
+html[data-accessibility-char="large"] span,
+html[data-accessibility-char="large"] li {
+  letter-spacing: var(--accessibility-char-large);
+}
+
+html[data-accessibility-char="xl"] body *,
+html[data-accessibility-char="xl"] h1,
+html[data-accessibility-char="xl"] h2,
+html[data-accessibility-char="xl"] h3,
+html[data-accessibility-char="xl"] h4,
+html[data-accessibility-char="xl"] h5,
+html[data-accessibility-char="xl"] h6,
+html[data-accessibility-char="xl"] p,
+html[data-accessibility-char="xl"] div,
+html[data-accessibility-char="xl"] span,
+html[data-accessibility-char="xl"] li {
+  letter-spacing: var(--accessibility-char-xl);
+}

@@ -2,11 +2,10 @@
 import { clientConfig } from '../../../client.config.js';
 import '../../styles/base.css';
 import '../../styles/typography.css';
-import '../../styles/notification-overrides.css';
-import '../../styles/accessibility/accessibility.css';
-import '../../components/accessibility/accessibility.css';
+import '../../utils/Glassmorphic.css';
 import '../../styles/DarkTheme/dark-theme-generator-colors.css';
 import '../../styles/DarkTheme/dark-mode-mapping.css';
+import '../../styles/accessibility/fonts.css';
 import { SkipLink, DarkMode } from 'accessible-astro-components';
 
 export interface Props {
@@ -31,7 +30,7 @@ const { title = clientConfig.seo.title, description = clientConfig.seo.descripti
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Poppins:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -47,55 +46,39 @@ const { title = clientConfig.seo.title, description = clientConfig.seo.descripti
 
     <title>{title}</title>
 
-    <!-- CSS Variables from client config -->
+    <!-- Brand Variables from client.config.js -->
     <style define:vars={{
-      // Colors from client config
-      'color-primary': clientConfig.colors.primary,
-      'color-secondary': clientConfig.colors.secondary,
-      'color-background': clientConfig.colors.background,
-      'color-accent1': clientConfig.colors.accent1,
-      'color-accent2': clientConfig.colors.accent2,
-      'color-accent3': clientConfig.colors.accent3,
-      'color-text': clientConfig.colors.text,
-      'color-text-light': clientConfig.colors.textLight,
-      'color-text-muted': clientConfig.colors.textMuted,
-      // Typography
+      // Brand colors from client config
+      'brand-primary': clientConfig.colors.primary,
+      'brand-secondary': clientConfig.colors.secondary,
+      'brand-background': clientConfig.colors.background,
+      'brand-accent1': clientConfig.colors.accent1,
+      'brand-accent2': clientConfig.colors.accent2,
+      'brand-accent3': clientConfig.colors.accent3,
+      'brand-text': clientConfig.colors.text,
+      'brand-text-light': clientConfig.colors.textLight,
+      'brand-text-muted': clientConfig.colors.textMuted,
+      // Typography from client config
       'font-body': clientConfig.typography.bodyFont,
       'font-header': clientConfig.typography.headerFont,
       'font-mono': clientConfig.typography.monoFont,
     }}>
       :root {
-        /* Typography */
+        /* Override brand tokens with client.config.js values */
+        --brand-primary: var(--brand-primary);
+        --brand-secondary: var(--brand-secondary);
+        --brand-background: var(--brand-background);
+        --brand-accent1: var(--brand-accent1);
+        --brand-accent2: var(--brand-accent2);
+        --brand-accent3: var(--brand-accent3);
+        --brand-text: var(--brand-text);
+        --brand-text-light: var(--brand-text-light);
+        --brand-text-muted: var(--brand-text-muted);
+
+        /* Override font families with client.config.js values */
         --font-body: var(--font-body);
         --font-header: var(--font-header);
         --font-mono: var(--font-mono);
-
-        /* System colors */
-        --color-white: #ffffff;
-        --color-black: #000000;
-      }
-
-      /* Light mode only - these get overridden in dark mode */
-      :root:not(.darkmode) {
-        --color-background: var(--color-background);
-        --color-text: var(--color-text);
-        --color-text-light: var(--color-text-light);
-        --color-text-muted: var(--color-text-muted);
-        --color-primary: var(--color-primary);
-        --color-primary-hover: var(--color-primary);
-        --color-secondary: var(--color-secondary);
-        --color-accent1: var(--color-accent1);
-        --color-accent2: var(--color-accent2);
-        --color-accent3: var(--color-accent3);
-
-        /* Theme variables for components */
-        --theme-surface: var(--color-background);
-        --theme-surface-elevated: color-mix(in srgb, var(--color-background) 90%, var(--color-text) 10%);
-        --theme-border: color-mix(in srgb, var(--color-background) 80%, var(--color-text) 20%);
-        --theme-primary: var(--color-primary);
-        --theme-text: var(--color-text);
-        --theme-text-light: var(--color-text-light);
-        --theme-text-muted: var(--color-text-muted);
       }
     </style>
   </head>

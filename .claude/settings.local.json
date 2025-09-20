@@ -6,7 +6,8 @@
       "Bash(npm install:*)",
       "WebFetch(domain:accessible-astro.incluud.dev)",
       "Bash(npm run dev:*)",
-      "Bash(move:*)"
+      "Bash(move:*)",
+      "Bash(curl:*)"
     ],
     "deny": [],
     "ask": []
