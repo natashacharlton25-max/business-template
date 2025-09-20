@@ -901,6 +901,19 @@ const brandColors = &#123;
     transform: translateY(-1px);
   }
 
+  .test-btn:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: var(--theme-surface-elevated);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb, 74, 144, 226), 0.3);
+    transform: translateY(-1px);
+  }
+
+  .test-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
   .test-btn.active {
     background: var(--color-primary);
     border-color: var(--color-primary);
@@ -918,6 +931,60 @@ const brandColors = &#123;
     background: var(--color-accent3);
     border-color: var(--color-accent3);
     color: white;
+  }
+
+  .test-btn.reset-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--color-secondary-rgb, 255, 87, 51), 0.3);
+  }
+
+  .test-btn.reset-btn:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+  }
+
+  /* Fix accessibility for .link elements with higher specificity */
+  a.link,
+  a[href].link {
+    color: var(--color-primary) !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 1px !important;
+    text-underline-offset: 2px !important;
+    transition: all var(--transition-base) !important;
+  }
+
+  a.link:hover,
+  a[href].link:hover {
+    color: var(--color-primary-hover, color-mix(in srgb, var(--color-primary) 90%, black 10%)) !important;
+    text-decoration-thickness: 2px !important;
+  }
+
+  a.link:focus,
+  a[href].link:focus {
+    outline: none !important;
+    color: var(--color-primary) !important;
+    background: rgba(74, 144, 226, 0.1) !important;
+    border-radius: 4px !important;
+    padding: 2px 4px !important;
+    margin: -2px -4px !important;
+    text-decoration: none !important;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.5) !important;
+  }
+
+  a.link:focus-visible,
+  a[href].link:focus-visible {
+    outline: 3px solid var(--color-primary) !important;
+    outline-offset: 2px !important;
+  }
+
+  /* Universal link focus styles as fallback */
+  a:focus {
+    outline: 2px solid #4890e2 !important;
+    outline-offset: 2px !important;
+    background: rgba(72, 144, 226, 0.1) !important;
+    border-radius: 3px !important;
+    padding: 1px 2px !important;
+    text-decoration: none !important;
   }
 
   @media (max-width: 768px) {
